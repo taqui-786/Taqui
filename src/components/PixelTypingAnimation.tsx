@@ -121,7 +121,21 @@ const letterPatterns:LetterPatterns = {
     [1, 0, 0, 1],
     [1, 0, 0, 1],
   ],
-  
+  B: [
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+  ],
+  L: [
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 1, 1, 1],
+  ],
+
   // Space character
   " ": [
     [0, 0, 0, 0],
@@ -327,7 +341,7 @@ function PixelTypingText({
 // Demo component with multiple words
 export default function PixelTypingDemo() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const words = ["I AM","A DEV", "SHIPS", "IDEAS"];
+  const words = ["BUILD", "SHIP", "LEARN", "REPEAT"];
    const [showText, setShowText] = useState(false);
   // Start after 3 seconds
   useEffect(() => {
