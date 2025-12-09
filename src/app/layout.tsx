@@ -7,15 +7,15 @@ import {
 } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { portfolioConfig } from "@/lib/portfolioConfig";
-import { Analytics } from "@vercel/analytics/react"
- const fontSans = FontSans({
+import { Analytics } from "@vercel/analytics/react";
+const fontSans = FontSans({
   weight: ["400", "500", "600"],
   display: "swap",
   subsets: ["latin"],
   variable: "--cd-font-sans",
 });
 
- const fontMono = FontMono({
+const fontMono = FontMono({
   weight: ["400", "500", "600"],
   display: "swap",
   subsets: ["latin"],
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     url: portfolioConfig.seo.url,
     title: portfolioConfig.name,
     description: portfolioConfig.description,
-    images: [`${portfolioConfig.seo.url}/og-image.png`],
+    images: [portfolioConfig.seo.ogImage],
     siteName: portfolioConfig.name,
   },
   twitter: {
     card: "summary_large_image",
     title: portfolioConfig.name,
     description: portfolioConfig.description,
-    images: [`${portfolioConfig.seo.url}/og-image.png`],
+    images: [portfolioConfig.seo.ogImage],
     creator: portfolioConfig.seo.twitterHandle,
   },
   icons: {
@@ -74,7 +74,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {/* <Header /> */}
-        {children}
+          {children}
         </ThemeProvider>
         <Analytics />
       </body>

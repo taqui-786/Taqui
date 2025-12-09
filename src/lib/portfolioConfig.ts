@@ -6,7 +6,7 @@ export const portfolioConfig = {
   location: "Ramgarh cantt, Jharkhand, India",
 
   // Contact Information
-  email: "mdtaqui.jhar@gmail.com", 
+  email: "mdtaqui.jhar@gmail.com",
 
   // Social Media Links
   socialLinks: {
@@ -14,12 +14,12 @@ export const portfolioConfig = {
     twitter: "https://twitter.com/Taquiimam14",
     linkedin: "https://www.linkedin.com/in/taqui-imam",
     external: "https://tinyurl.com/MdTaquiImam",
-    github: "https://github.com/taqui-786", 
+    github: "https://github.com/taqui-786",
   },
 
   // SEO Information
   seo: {
-    ogImage: "https://taqui-imam.vercel.app/og-image.png",
+    ogImage: "https://taqui-imam.vercel.app/api/og",
     url: "https://taqui-imam.vercel.app",
     twitterHandle: "@Taquiimam14",
     keywords: [
@@ -59,14 +59,4 @@ export const portfolioConfig = {
       },
     ],
   },
-
-
-
-
-
-
-
-
-
-
 };
