@@ -152,6 +152,23 @@ const projects = [
     ],
   },
   {
+    id: 13,
+    title: "Snapgroov",
+    href: "https://github.com/taqui-786/Snapgroove",
+    live: "https://snapgroov.vercel.app/",
+    createdAt: "09-12-2025",
+    description:
+      "Make your screenshots look less like a cry for help. Add shadows, gradients, and device frames in one click. It’s the easiest way to make your work look expensive.",
+    features: [
+      "Add shadows, gradients, and device frames in one click",
+      "Supports multiple devices",
+      "No sign-up, no credit card required No limits",
+      "smooth image export in you device",
+      "Modern UI components styled with shadcn-ui and Tailwind CSS",
+    ],
+    badge: ["Next.js", "Typescript", "Tailwind CSS", "Shadcn UI", "Radix UI"],
+  },
+  {
     id: 12,
     title: "Wryte",
     href: "https://github.com/taqui-786/Wryte",
