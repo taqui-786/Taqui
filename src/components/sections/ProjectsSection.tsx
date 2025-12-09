@@ -152,7 +152,7 @@ const projects = [
     ],
   },
   {
-    id: 13,
+    id: 2,
     title: "Snapgroov",
     href: "https://github.com/taqui-786/Snapgroove",
     live: "https://snapgroov.vercel.app/",
@@ -169,7 +169,7 @@ const projects = [
     badge: ["Next.js", "Typescript", "Tailwind CSS", "Shadcn UI", "Radix UI"],
   },
   {
-    id: 12,
+    id:     3,
     title: "Wryte",
     href: "https://github.com/taqui-786/Wryte",
     live: "https://wryte-ti.vercel.app/",
@@ -199,7 +199,7 @@ const projects = [
     ],
   },
   {
-    id: 13,
+    id: 4,
     title: "PDFlow",
     href: "https://github.com/taqui-786/PDFlow",
     live: "https://pdflow-free.vercel.app/",
@@ -231,7 +231,7 @@ const projects = [
     ],
   },
   {
-    id: 12,
+    id: 5,
     title: "WePost",
     href: "https://github.com/taqui-786/WePost",
     live: "https://wepost.vercel.app",
@@ -262,7 +262,7 @@ const projects = [
     ],
   },
   {
-    id: 2,
+    id: 6,
     title: "itZmyLink",
     href: "https://github.com/taqui-786/itZmyLink",
     live: "https://itzmylink.vercel.app/",
@@ -292,7 +292,7 @@ const projects = [
     ],
   },
   {
-    id: 3,
+    id: 7,
     title: "Portfolio",
     href: "https://github.com/taqui-786/Portfolio",
     live: "https://mdtaquiimam.vercel.app/",
@@ -319,7 +319,7 @@ const projects = [
     ],
   },
   {
-    id: 4,
+    id: 8,
     title: "Mixcn Ui",
     href: "https://github.com/taqui-786/mixcnui",
     live: "https://mixcn-ui.vercel.app/",
@@ -346,7 +346,7 @@ const projects = [
     ],
   },
   {
-    id: 5,
+    id: 9,
     title: "Devletter",
     href: "https://github.com/taqui-786/Devletter",
     live: "https://devletter.vercel.app/",
@@ -376,7 +376,7 @@ const projects = [
     ],
   },
   {
-    id: 6,
+    id: 10,
     title: "Carousel Maker",
     href: "https://github.com/taqui-786/crousal-maker",
     live: "https://crousal-maker.vercel.app/",
@@ -406,7 +406,7 @@ const projects = [
     ],
   },
   {
-    id: 7,
+    id: 11,
     title: "Friendz",
     href: "https://github.com/taqui-786/project-friendz",
     live: "https://friendz.vercel.app/",
@@ -437,7 +437,7 @@ const projects = [
     ],
   },
   {
-    id: 8,
+    id: 12,
     title: "GitEstimate",
     href: "https://github.com/taqui-786/GitEstimate",
     live: "https://gitestimate.vercel.app/",
@@ -465,7 +465,7 @@ const projects = [
     ],
   },
   {
-    id: 9,
+    id: 13,
     title: "FormCraft",
     href: "https://github.com/taqui-786/formcraft",
     live: "https://formcraft-ti.vercel.app/",
@@ -494,7 +494,7 @@ const projects = [
     ],
   },
   {
-    id: 10,
+    id: 14,
     title: "Devzone",
     href: "https://github.com/taqui-786/Devzone",
     live: "https://devzone-ti.vercel.app/",
