@@ -11,10 +11,10 @@ function SocialLinks() {
   const socialLinks = [
     {
       name: "Twitter",
-      username: "@Taquiimam14",
+      username: "@md_taqui_imam",
       src: TwitterLogo.src,
       alt: "Twitter",
-      href: "https://twitter.com/Taquiimam14",
+      href: "https://twitter.com/md_taqui_imam",
     },
 
     {

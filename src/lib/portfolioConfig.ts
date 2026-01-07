@@ -11,7 +11,7 @@ export const portfolioConfig = {
   // Social Media Links
   socialLinks: {
     facebook: "https://www.facebook.com/shahina.khatun.1044",
-    twitter: "https://twitter.com/Taquiimam14",
+    twitter: "https://twitter.com/md_taqui_imam",
     linkedin: "https://www.linkedin.com/in/taqui-imam",
     external: "https://tinyurl.com/MdTaquiImam",
     github: "https://github.com/taqui-786",
@@ -21,7 +21,7 @@ export const portfolioConfig = {
   seo: {
     ogImage: "https://taqui-imam.vercel.app/api/og",
     url: "https://taqui-imam.vercel.app",
-    twitterHandle: "@Taquiimam14",
+    twitterHandle: "@md_taqui_imam",
     keywords: [
       "md",
       "taqui",
