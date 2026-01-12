@@ -4,11 +4,10 @@ import { Sun } from "@hugeicons/core-free-icons";
 import GitHubHeaderBtn from "./GithubHeaderBtn";
 import { Link } from "next-view-transitions";
 
-
 function Header() {
   return (
-    <header className="container mx-auto max-w-3xl px-4 sticky top-0 z-50 rounded-md py-4 backdrop-blur-sm">
-      <div className="flex items-center justify-between px-6">
+    <header className="container mx-auto max-w-full md:max-w-3xl px-4 sticky top-0 z-50 rounded-md py-4 backdrop-blur-sm">
+      <div className="flex items-center justify-between">
         <div className="flex gap-4">
           <Link href="/">
             <div className="h-12 w-12 rounded-md bg-blue-300 overflow-hidden flex items-end p-0">
@@ -25,10 +24,25 @@ function Header() {
               />
             </div>{" "}
           </Link>
-          <nav className="flex items-center gap-4 text">
-            <Link href="/work" className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4">Work</Link>
-            <Link href="/projects" className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4">Projects</Link>
-            <Link href="/blogs" className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4">Blogs</Link>
+          <nav className="flex items-center gap-2 md:gap-4 text">
+            <Link
+              href="/work"
+              className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4"
+            >
+              Work
+            </Link>
+            <Link
+              href="/projects"
+              className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4"
+            >
+              Projects
+            </Link>
+            <Link
+              href="/blogs"
+              className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4"
+            >
+              Blogs
+            </Link>
           </nav>
         </div>
 

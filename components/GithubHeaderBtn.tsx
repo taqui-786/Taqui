@@ -31,7 +31,7 @@ const GitHubHeaderBtn: React.FC = () => {
       <a
         href='https://github.com/taqui-786/taqui'
         target='_blank'
-        className='relative inline-block w-32 h-[2.5em] mx-auto group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg'
+        className='relative inline-block w-12 md:w-32 h-[2.5em] mx-auto group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg'
       >
         <div className='absolute w-[112.81%] h-[128.57%] top-[8.57%] left-1/2 -translate-x-1/2 filter blur-[19px] opacity-70'>
           <span className='absolute inset-0 rounded-lg bg-[#d9d9d9] filter blur-[6.5px]'></span>
@@ -62,8 +62,8 @@ const GitHubHeaderBtn: React.FC = () => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <span className='flex items-center justify-center px-2 gap-1 rounded-lg group-hover:text-yellow-400 text-white text-lg font-semibold tracking-wide whitespace-nowrap'>
-            <HugeiconsIcon icon={Github} className='inline-block group-hover:fill-yellow-400 fill-white w-6 h-6 shrink-0' />{' '}
-            Github
+            <HugeiconsIcon icon={Github} className='md:inline-block group-hover:fill-yellow-400 fill-white w-6 h-6 shrink-0 ' />{' '}
+            <span className="hidden md:inline-block">Github</span>
           </span>
         </button>
       </a>

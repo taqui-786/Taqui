@@ -5,7 +5,7 @@ import HeroName from "@/components/HeroName";
 import HeroActionButton from "@/components/HeroActionButton";
 export default function Page() {
   return (
-    <div className="container mx-auto max-w-3xl px-4 h-full py-16">
+    <div className="container mx-auto max-w-full md:max-w-3xl px-4 h-auto py-16">
       <HeroImageSection />
       {/* Hero section part */}
       <div className="relative space-y-8 pl-4">

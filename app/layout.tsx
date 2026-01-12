@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Instrument_Serif,Hanken_Grotesk } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Instrument_Serif,
+  Hanken_Grotesk,
+} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ViewTransitions } from 'next-view-transitions';
-import ReactLenis from 'lenis/react';
+import { ViewTransitions } from "next-view-transitions";
+import ReactLenis from "lenis/react";
 // const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -16,7 +22,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 const hankenGrotesk = Hanken_Grotesk({
-  weight: ["400","500","600","700"],
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -38,20 +44,18 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-
-    <html lang="en" className={hankenGrotesk.variable}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
+      <html lang="en" className={hankenGrotesk.variable}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
         >
           <ReactLenis root>
-
-        <main className="min-h-dvh">
-          <Header />
-          {children}
-        </main>
+            <main className="min-h-dvh">
+              <Header />
+              {children}
+            </main>
           </ReactLenis>
-      </body>
-    </html>
-        </ViewTransitions>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
