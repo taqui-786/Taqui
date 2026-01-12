@@ -1,0 +1,46 @@
+import { Button } from "./ui/button";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Sun } from "@hugeicons/core-free-icons";
+import GitHubHeaderBtn from "./GithubHeaderBtn";
+import { Link } from "next-view-transitions";
+
+
+function Header() {
+  return (
+    <header className="container mx-auto max-w-3xl px-4 sticky top-0 z-50 rounded-md py-4 backdrop-blur-sm">
+      <div className="flex items-center justify-between px-6">
+        <div className="flex gap-4">
+          <Link href="/">
+            <div className="h-12 w-12 rounded-md bg-blue-300 overflow-hidden flex items-end p-0">
+              <img
+                alt="logo"
+                loading="lazy"
+                width="100"
+                height="100"
+                decoding="async"
+                data-nimg="1"
+                className="h-full w-full object-cover  scale-[1.4] translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:transition-transform [@media(hover:hover)_and_(pointer:fine)]:duration-200 [@media(hover:hover)_and_(pointer:fine)]:ease-[ease] [@media(hover:hover)_and_(pointer:fine)]:hover:scale-125 [@media(hover:hover)_and_(pointer:fine)]:will-change-transform"
+                src="taqui-removebg-preview.png"
+                style={{ backgroundColor: "transparent" }}
+              />
+            </div>{" "}
+          </Link>
+          <nav className="flex items-center gap-4 text">
+            <Link href="/work" className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4">Work</Link>
+            <Link href="/projects" className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4">Projects</Link>
+            <Link href="/blogs" className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4">Blogs</Link>
+          </nav>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <GitHubHeaderBtn />
+          <Button size={"icon-lg"} variant={"ghost"}>
+            <HugeiconsIcon icon={Sun} />
+          </Button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Header;

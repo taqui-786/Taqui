@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Instrument_Serif,Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import { ViewTransitions } from 'next-view-transitions';
+import ReactLenis from 'lenis/react';
+// const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const instrumentSerif = Instrument_Serif({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+const hankenGrotesk = Hanken_Grotesk({
+  weight: ["400","500","600","700"],
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 const geistMono = Geist_Mono({
@@ -23,12 +37,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <ViewTransitions>
+
+    <html lang="en" className={hankenGrotesk.variable}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
+        >
+          <ReactLenis root>
+
+        <main className="min-h-dvh">
+          <Header />
+          {children}
+        </main>
+          </ReactLenis>
       </body>
     </html>
+        </ViewTransitions>
   );
 }
