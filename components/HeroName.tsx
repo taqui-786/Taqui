@@ -12,7 +12,7 @@ function HeroName() {
         width="28"
         height="28"
         fill="#2db6f0"
-        className="animate-pulse"
+        className="hover:rotate-360 transition-all duration-300"
       >
         <path
           xmlns="http://www.w3.org/2000/svg"

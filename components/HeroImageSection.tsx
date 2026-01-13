@@ -10,14 +10,14 @@ function HeroImageSection() {
         inset="10px"
         transitionLength="100px"
         blur="15px"
-        classname="h-76 w-full overflow-hidden"
+        classname="h-76 w-full z-10 overflow-hidden"
       >
         <video
           autoPlay={true}
           muted
           loop
           content="true"
-          className="w-full  h-full object-cover  transition-all hover:scale-110"
+          className="w-full  h-full object-cover"
         >
           <source
             src="https://cdn.pixabay.com/video/2023/10/19/185726-876210695_large.mp4"
@@ -27,7 +27,7 @@ function HeroImageSection() {
         <BlurVignetteArticle />
       </BlurVignette>
       {/* Profile Image */}
-      <div className="absolute -bottom-16 left-8 z-50 group">
+      <div className="absolute -bottom-16 md:left-8 left-4 z-40 group">
         <div className="relative">
           <div className="relative h-40 w-40 rounded-full overflow-hidden backdrop-blur-xl bg-white/20 dark:bg-white/10 border border-white/30 dark:border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.5)] transition-all duration-300 group-hover:scale-105">
             <div className="absolute inset-0 bg-linear-to-br from-white/30 via-white/10 to-transparent pointer-events-none"></div>
