@@ -440,12 +440,10 @@ export const HeroContributionGraph = () => {
   }, []);
 
   return (
-    <div className="max-w-full rounded-lg border bg-background p-2">
+    <div className="max-w-full rounded-lg border bg-background p-2 animate-fade-in-blur">
       {isLoading ? (
         <div className="flex items-center justify-center h-32">
-          <span className="text-sm text-muted-foreground">
-            Loading contributions...
-          </span>
+      <div className="h-full w-full bg-gray-200 animate-pulse"></div>
         </div>
       ) : (
         <ContributionGraph

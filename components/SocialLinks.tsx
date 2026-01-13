@@ -45,6 +45,7 @@ function SocialLinks() {
     },
 
     {
+      key: 4,
       name: "Instagram",
       username: "@md_taqui_imam",
       icon: Instagram,

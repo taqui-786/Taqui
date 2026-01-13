@@ -1,8 +1,7 @@
-import { Button } from "./ui/button";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Sun } from "@hugeicons/core-free-icons";
+
 import GitHubHeaderBtn from "./GithubHeaderBtn";
 import { Link } from "next-view-transitions";
+import { ThemeTogglerButton } from "./animate-ui/components/buttons/theme-toggler";
 
 function Header() {
   return (
@@ -48,9 +47,8 @@ function Header() {
 
         <div className="flex items-center gap-2">
           <GitHubHeaderBtn />
-          <Button size={"icon-lg"} variant={"ghost"}>
-            <HugeiconsIcon icon={Sun} />
-          </Button>
+         
+          <ThemeTogglerButton variant={'outline'} size={'lg'}/>
         </div>
       </div>
     </header>

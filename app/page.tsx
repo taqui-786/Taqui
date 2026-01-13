@@ -4,6 +4,7 @@ import HeroBio from "@/components/HeroBio";
 import HeroName from "@/components/HeroName";
 import HeroActionButton from "@/components/HeroActionButton";
 import { HeroContributionGraph } from "@/components/uilayouts/contribution-graph";
+import ProjectsSection from "@/components/ProjectsSection";
 export default function Page() {
   return (
     <div className="container mx-auto max-w-full md:max-w-3xl px-4 h-auto py-16">
@@ -16,10 +17,11 @@ export default function Page() {
         {/* Action Buttons */}
         <HeroActionButton />
         {/* Social Icons */}
-        <div className="">
-          <SocialLinks />
-        </div>
-        <HeroContributionGraph/>
+        <SocialLinks />
+        {/* Contribution Graph */}
+        <HeroContributionGraph />
+        {/* Projects section */}
+        <ProjectsSection />
       </div>
     </div>
   );

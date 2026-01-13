@@ -2,7 +2,7 @@ import React from "react";
 
 function HeroName() {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 animate-fade-in-blur">
       <h1 className="text-4xl md:text-5xl font-instrument-serif italic font-medium text-gray-900 dark:text-gray-50 tracking-tight transition-colors duration-300">
         Md Taqui Imam
       </h1>
