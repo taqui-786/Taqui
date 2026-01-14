@@ -1,28 +1,82 @@
+'use client'
 import React from "react";
-import ProjectCard from "./uilayouts/ProjectCard";
+import ProjectCard, { ProjectData } from "./uilayouts/ProjectCard";
+import {
+  Auth0Icon,
+  DockerIcon,
+  DrizzleIcon,
+  FileTypeReactjsIcon,
+  GitIcon,
+  JavascriptIcon,
+  MongodbIcon,
+  MysqlDarkIcon,
+  NestjsIcon,
+  NextjsIcon,
+  NodejsIconIcon,
+  OpenaiIcon,
+  PostgresqlIcon,
+  PrismaIcon,
+  ReactQueryIcon,
+  ReactRouterIcon,
+  ReactnavigationIcon,
+  RedisIcon,
+  ReduxIcon,
+  ShadcnuiIcon,
+  TailwindcssIcon,
+  TypescriptIcon,
+} from "./customIcons";
 
+ const techStack = {
+  javascript: { name: "JavaScript", icon: JavascriptIcon },
+  typescript: { name: "TypeScript", icon: TypescriptIcon },
+  reactjs: { name: "Reactjs", icon: FileTypeReactjsIcon },
+  nextjs: { name: "Nextjs", icon: NextjsIcon },
+  nodejs: { name: "Nodejs", icon: NodejsIconIcon },
+  nestjs: { name: "NestJs", icon: NestjsIcon },
+
+  tailwindcss: { name: "TailwindCSS", icon: TailwindcssIcon },
+  shadcnui: { name: "Shadcn Ui", icon: ShadcnuiIcon },
+  oauth: { name: "OAuth", icon: Auth0Icon },
+  tanstackquery: { name: "TanStack Query", icon: ReactQueryIcon },
+  reactredux: { name: "React-Redux", icon: ReduxIcon },
+  reactrouter: { name: "React-Router", icon: ReactRouterIcon },
+  reactnavigation: { name: "React-Navigation", icon: ReactnavigationIcon },
+  git: { name: "Git", icon: GitIcon },
+  docker: { name: "Docker", icon: DockerIcon },
+  mysql: { name: "My Sql", icon: MysqlDarkIcon },
+  mongodb: { name: "MongoDB", icon: MongodbIcon },
+  redis: { name: "Redis", icon: RedisIcon },
+  postgres: { name: "Postgres", icon: PostgresqlIcon },
+  prisma: { name: "Prisma ORM", icon: PrismaIcon },
+  drizzle: { name: "Drizzle ORM", icon: DrizzleIcon },
+  openai: { name: "Chat GPT", icon: OpenaiIcon },
+};
 function ProjectsSection() {
   return (
     <div className="w-full animate-fade-in-blur ">
-     <div>
-      <p className="md:text-base text-sm text-muted-foreground">Featured</p>
-      <div className="flex items-center gap-2">
-      <h2 className="md:text-5xl text-3xl font-medium font-instrument-serif italic  tracking-wider shrink-0">My Projects</h2>
-      <div className="w-full h-[2px] bg-gray-200 grow"></div>
+      <div>
+        <p className="md:text-base text-sm text-muted-foreground">Featured</p>
+        <div className="flex items-center gap-2">
+          <h2 className="md:text-5xl text-3xl font-medium font-instrument-serif italic  tracking-wider shrink-0">
+            My Projects
+          </h2>
+          <div className="w-full h-[2px] bg-gray-200 grow"></div>
+        </div>
       </div>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-    <ProjectCard/>
-    </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
     </div>
   );
 }
 
 export default ProjectsSection;
-const projects = [
+const projects: ProjectData[] = [
   {
     id: 1,
-    title: "Tweetz",
+    name: "Tweetz",
     href: "https://tweetz.app/",
     live: "https://tweetz.app/",
     createdAt: "20-08-2025",
@@ -40,6 +94,16 @@ const projects = [
       "Efficient data fetching using Tanstack Query",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.postgres,
+      techStack.shadcnui,
+      techStack.tanstackquery,
+      techStack.oauth,
+      techStack.prisma,
+      techStack.openai,
+    ],
     badge: [
       "Next.js",
       "Freelancing",
@@ -54,7 +118,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Snapgroov",
+    name: "Snapgroov",
     href: "https://github.com/taqui-786/Snapgroove",
     live: "https://snapgroov.vercel.app/",
     createdAt: "09-12-2025",
@@ -67,11 +131,17 @@ const projects = [
       "smooth image export in you device",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+    ],
     badge: ["Next.js", "Typescript", "Tailwind CSS", "Shadcn UI", "Radix UI"],
   },
   {
-    id:     3,
-    title: "Wryte",
+    id: 3,
+    name: "Wryte",
     href: "https://github.com/taqui-786/Wryte",
     live: "https://wryte-ti.vercel.app/",
     createdAt: "01-12-2025",
@@ -88,6 +158,16 @@ const projects = [
       "Efficient data fetching using Tanstack Query",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.oauth,
+      techStack.drizzle,
+      techStack.openai,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+      techStack.tanstackquery,
+    ],
     badge: [
       "Next.js",
       "Typescript",
@@ -101,7 +181,7 @@ const projects = [
   },
   {
     id: 4,
-    title: "PDFlow",
+    name: "PDFlow",
     href: "https://github.com/taqui-786/PDFlow",
     live: "https://pdflow-free.vercel.app/",
     createdAt: "12-07-2025",
@@ -119,6 +199,14 @@ const projects = [
       "Efficient data fetching using Tanstack Query",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.drizzle,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+      techStack.tanstackquery,
+    ],
     badge: [
       "Next.js",
       "Langchain",
@@ -133,7 +221,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "WePost",
+    name: "WePost",
     href: "https://github.com/taqui-786/WePost",
     live: "https://wepost.vercel.app",
     createdAt: "09-03-2025",
@@ -151,6 +239,14 @@ const projects = [
       "Efficient data fetching using Tanstack Query",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.prisma,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+      techStack.tanstackquery,
+    ],
     badge: [
       "Open source",
       "Next.js",
@@ -164,7 +260,7 @@ const projects = [
   },
   {
     id: 6,
-    title: "itZmyLink",
+    name: "itZmyLink",
     href: "https://github.com/taqui-786/itZmyLink",
     live: "https://itzmylink.vercel.app/",
     createdAt: "14-10-2023",
@@ -181,6 +277,12 @@ const projects = [
       "Data stored in Supabase",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+    ],
     badge: [
       "Open source",
       "Next.js",
@@ -194,7 +296,7 @@ const projects = [
   },
   {
     id: 7,
-    title: "Portfolio",
+    name: "Portfolio",
     href: "https://github.com/taqui-786/Portfolio",
     live: "https://mdtaquiimam.vercel.app/",
     createdAt: "15-11-2023",
@@ -209,6 +311,12 @@ const projects = [
 
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+    ],
     badge: [
       "Open source",
       "Next.js",
@@ -221,7 +329,7 @@ const projects = [
   },
   {
     id: 8,
-    title: "Mixcn Ui",
+    name: "Mixcn Ui",
     href: "https://github.com/taqui-786/mixcnui",
     live: "https://mixcn-ui.vercel.app/",
     createdAt: "16-06-2024",
@@ -234,6 +342,12 @@ const projects = [
       "Responsive design for all devices",
       "Customizable components for various use cases",
       "Built with Next.js 15 framework",
+    ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
     ],
     badge: [
       "Open source",
@@ -248,7 +362,7 @@ const projects = [
   },
   {
     id: 9,
-    title: "Devletter",
+    name: "Devletter",
     href: "https://github.com/taqui-786/Devletter",
     live: "https://devletter.vercel.app/",
     createdAt: "22-11-2023",
@@ -262,6 +376,13 @@ const projects = [
       "Built with Next.js 15 framework",
       "Data stored in Supabase",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
+    ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.prisma,
+      techStack.tailwindcss,
+      techStack.shadcnui,
     ],
     badge: [
       "Open source",
@@ -278,7 +399,7 @@ const projects = [
   },
   {
     id: 10,
-    title: "Carousel Maker",
+    name: "Carousel Maker",
     href: "https://github.com/taqui-786/crousal-maker",
     live: "https://crousal-maker.vercel.app/",
     createdAt: "09-12-2023",
@@ -292,6 +413,12 @@ const projects = [
       "User-friendly interface for easy editing",
       "Built with Next.js 14 framework",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
+    ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
     ],
     badge: [
       "Open source",
@@ -308,7 +435,7 @@ const projects = [
   },
   {
     id: 11,
-    title: "Friendz",
+    name: "Friendz",
     href: "https://github.com/taqui-786/project-friendz",
     live: "https://friendz.vercel.app/",
     createdAt: "16-08-2023",
@@ -322,6 +449,14 @@ const projects = [
       "Authentication powered by Next-Auth",
       "Built with Next.js 14 framework",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
+    ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.prisma,
+      techStack.redis,
+      techStack.tailwindcss,
+      techStack.shadcnui,
     ],
     badge: [
       "Open source",
@@ -339,7 +474,7 @@ const projects = [
   },
   {
     id: 12,
-    title: "GitEstimate",
+    name: "GitEstimate",
     href: "https://github.com/taqui-786/GitEstimate",
     live: "https://gitestimate.vercel.app/",
     createdAt: "09-12-2023",
@@ -354,6 +489,12 @@ const projects = [
       "Built with Next.js 14 framework",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
     ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+    ],
     badge: [
       "Open source",
       "Next.js",
@@ -367,7 +508,7 @@ const projects = [
   },
   {
     id: 13,
-    title: "FormCraft",
+    name: "FormCraft",
     href: "https://github.com/taqui-786/formcraft",
     live: "https://formcraft-ti.vercel.app/",
     createdAt: "25-08-2024",
@@ -381,6 +522,12 @@ const projects = [
       "User-friendly interface",
       "Built with Next.js 14 framework",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
+    ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
     ],
     badge: [
       "Open source",
@@ -396,7 +543,7 @@ const projects = [
   },
   {
     id: 14,
-    title: "Devzone",
+    name: "Devzone",
     href: "https://github.com/taqui-786/Devzone",
     live: "https://devzone-ti.vercel.app/",
     createdAt: "03-11-2024",
@@ -411,6 +558,13 @@ const projects = [
       "Job Board: Find opportunities or hire talent within the community",
       "Built with Next.js 14 framework",
       "Modern UI components styled with shadcn-ui and Tailwind CSS",
+    ],
+    technologies: [
+      techStack.nextjs,
+      techStack.typescript,
+      techStack.tailwindcss,
+      techStack.shadcnui,
+      techStack.tanstackquery,
     ],
     badge: [
       "Open source",

@@ -1,65 +1,13 @@
 "use client";
 
-import {
-  Github01Icon,
-  GithubIcon,
-  LinkCircle02Icon,
-} from "@hugeicons/core-free-icons";
+import { GithubIcon, LinkCircle02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, motion } from "motion/react";
 import type { SVGProps } from "react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useOnClickOutside } from "usehooks-ts";
-import {
-  Auth0Icon,
-  DockerIcon,
-  DrizzleIcon,
-  FileTypeReactjsIcon,
-  GitIcon,
-  JavascriptIcon,
-  MongodbIcon,
-  MysqlDarkIcon,
-  NestjsIcon,
-  NextjsIcon,
-  NodejsIconIcon,
-  OpenaiIcon,
-  PostgresqlIcon,
-  PrismaIcon,
-  ReactQueryIcon,
-  ReactRouterIcon,
-  ReactnavigationIcon,
-  RedisIcon,
-  ReduxIcon,
-  ShadcnuiIcon,
-  TailwindcssIcon,
-  TypescriptIcon,
-} from "../customIcons";
 
-const techStack = {
-  javascript: { name: "JavaScript", icon: JavascriptIcon },
-  typescript: { name: "TypeScript", icon: TypescriptIcon },
-  reactjs: { name: "Reactjs", icon: FileTypeReactjsIcon },
-  nextjs: { name: "Nextjs", icon: NextjsIcon },
-  nodejs: { name: "Nodejs", icon: NodejsIconIcon },
-  nestjs: { name: "NestJs", icon: NestjsIcon },
-
-  tailwindcss: { name: "TailwindCSS", icon: TailwindcssIcon },
-  shadcnui: { name: "Shadcn Ui", icon: ShadcnuiIcon },
-  oauth: { name: "OAuth", icon: Auth0Icon },
-  tanstackquery: { name: "TanStack Query", icon: ReactQueryIcon },
-  reactredux: { name: "React-Redux", icon: ReduxIcon },
-  reactrouter: { name: "React-Router", icon: ReactRouterIcon },
-  reactnavigation: { name: "React-Navigation", icon: ReactnavigationIcon },
-  git: { name: "Git", icon: GitIcon },
-  docker: { name: "Docker", icon: DockerIcon },
-  mysql: { name: "My Sql", icon: MysqlDarkIcon },
-  mongodb: { name: "MongoDB", icon: MongodbIcon },
-  redis: { name: "Redis", icon: RedisIcon },
-  postgres: { name: "Postgres", icon: PostgresqlIcon },
-  prisma: { name: "Prisma ORM", icon: PrismaIcon },
-  drizzle: { name: "Drizzle ORM", icon: DrizzleIcon },
-  openai: { name: "Chat GPT", icon: OpenaiIcon },
-};
 export type Project = {
   name: string;
   description: string;
@@ -71,52 +19,34 @@ export type ProjectListingProps = {
   onProjectClick?: (project: Project) => void;
 };
 
-const dummyData = {
-  id: 1,
-  name: "Tweetz",
-  href: "https://tweetz.app/",
-  live: "https://tweetz.app/",
-  createdAt: "20-08-2025",
-  description:
-    "Tweetz.app is an AI-assisted Twitter posting with one-tap Telegram approvals and with bunch of many other cool features",
-  features: [
-    "Better Auth authentication including sign up, sign in, and logout",
-    "Have 7 Day free trial, No credit card required",
-    "Auto Geneate Tweets based on your prefrences on daily basis",
-    "Learns your tone so well, even your mom won't know the difference. (Fully editable, in case our AI gets too sassy.)",
-    "Stay in control from your couch, your commute, or that awkward elevator ride.",
-    "Set it and forget it. Like a crockpot, but for your Twitter presence.",
-    "Your content goes live exactly when planned. No more 'Did I post that?' panic attacks at 2 AM.",
-    "Data stored in Neon PostgreSQL and managed with Prisma ORM",
-    "Efficient data fetching using Tanstack Query",
-    "Modern UI components styled with shadcn-ui and Tailwind CSS",
-  ],
-  technologies: [
-    techStack.nextjs,
-    techStack.typescript,
-    techStack.oauth,
-    techStack.prisma,
-    techStack.openai,
-    techStack.tailwindcss,
-    techStack.shadcnui,
-    techStack.tanstackquery,
-  ],
-  badge: [
-    "Next.js",
-    "Freelancing",
-    "Typescript",
-    "Better Auth",
-    "Prisma",
-    "Open Ai",
-    "Tailwind CSS",
-    "Shadcn UI",
-    "Tanstack Query",
-  ],
+export type TechStackItem = {
+  name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: React.ComponentType<any>;
 };
-export default function ProjectCard() {
+
+export type ProjectData = {
+  id: number;
+  name: string;
+  href: string;
+  live: string;
+  createdAt: string;
+  description: string;
+  features: string[];
+  technologies: TechStackItem[];
+  badge: string[];
+};
+
+export default function ProjectCard({ project }: { project: ProjectData }) {
   const [activeItem, setActiveItem] = useState<Project | null>(null);
+  const [mounted, setMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   useOnClickOutside(ref, () => setActiveItem(null));
+
+  // Ensure portal only renders on client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     function onKeyDown(event: { key: string }) {
@@ -171,170 +101,177 @@ export default function ProjectCard() {
 
   return (
     <>
-      {/* Backdrop overlay */}
-      <AnimatePresence>
-        {activeItem ? (
-          <motion.div
-            animate={{ opacity: 1 }}
-            className="pointer-events-auto fixed inset-0 z-100 bg-black/40 backdrop-blur-md"
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setActiveItem(null)}
-          />
-        ) : null}
-      </AnimatePresence>
+      {/* Portal for Dialog - renders at document.body level to escape parent stacking contexts */}
+      {mounted &&
+        createPortal(
+          <>
+            {/* Backdrop overlay */}
+            <AnimatePresence>
+              {activeItem ? (
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  className="pointer-events-auto fixed inset-0 z-9999 bg-black/40 backdrop-blur-md"
+                  exit={{ opacity: 0 }}
+                  initial={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setActiveItem(null)}
+                />
+              ) : null}
+            </AnimatePresence>
 
-      {/* Expanded Dialog Card */}
-      <AnimatePresence mode="wait">
-        {activeItem ? (
-          <div className="fixed inset-0 z-100 grid place-items-center p-4 pointer-events-auto ">
-            <motion.div
-              className="flex max-h-[85vh] w-full max-w-2xl cursor-default flex-col overflow-hidden rounded-2xl border bg-background shadow-2xl pointer-events-auto"
-              layoutId={`card-container-${dummyData.name}`}
-              ref={ref}
-              transition={springTransition}
-            >
-              {/* Banner */}
-              <motion.div
-                layoutId={`card-banner-${dummyData.name}`}
-                className="w-full bg-gray-200 aspect-video shrink-0"
-                transition={springTransition}
-              />
-
-              {/* Scrollable content area */}
-              <motion.div
-                className="flex flex-1 flex-col gap-4 overflow-y-auto overscroll-contain p-6 pointer-events-auto"
-                data-lenis-prevent
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: 0.1, duration: 0.2 }}
-              >
-                {/* Header with title, date, and links */}
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex flex-col gap-1">
-                    <motion.h2
-                      layoutId={`card-title-${dummyData.name}`}
-                      className="text-2xl font-bold"
-                      transition={springTransition}
-                    >
-                      {activeItem.name}
-                    </motion.h2>
-                    <motion.span
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
-                      className="text-sm text-muted-foreground"
-                    >
-                      Created: {dummyData.createdAt}
-                    </motion.span>
-                  </div>
+            {/* Expanded Dialog Card */}
+            <AnimatePresence mode="wait">
+              {activeItem ? (
+                <div className="fixed inset-0 z-9999 grid place-items-center p-4 pointer-events-none">
                   <motion.div
-                    layoutId={`card-links-${dummyData.name}`}
-                    className="flex gap-2 items-center text-muted-foreground [&_svg]:cursor-pointer [&_svg]:transition-colors [&_svg]:hover:text-primary"
+                    className="flex max-h-[85vh] w-full max-w-2xl cursor-default flex-col overflow-hidden rounded-2xl border bg-background shadow-2xl pointer-events-auto"
+                    layoutId={`card-container-${project.name}`}
+                    ref={ref}
                     transition={springTransition}
                   >
-                    <a
-                      href={dummyData.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Live Demo"
-                    >
-                      <HugeiconsIcon icon={LinkCircle02Icon} />
-                    </a>
-                    <a
-                      href={dummyData.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="GitHub"
-                    >
-                      <HugeiconsIcon icon={GithubIcon} />
-                    </a>
-                  </motion.div>
-                </div>
+                    {/* Banner */}
+                    <motion.div
+                      layoutId={`card-banner-${project.name}`}
+                      className="w-full bg-gray-200 aspect-video shrink-0"
+                      transition={springTransition}
+                    />
 
-                {/* Description */}
-                <motion.p
-                  layoutId={`card-description-${dummyData.name}`}
-                  className="text-muted-foreground text-base leading-relaxed"
-                  transition={springTransition}
-                >
-                  {activeItem.description}
-                </motion.p>
+                    {/* Scrollable content area */}
+                    <motion.div
+                      className="flex flex-1 flex-col gap-4 overflow-y-auto overscroll-contain p-6 pointer-events-auto"
+                      data-lenis-prevent
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ delay: 0.1, duration: 0.2 }}
+                    >
+                      {/* Header with title, date, and links */}
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex flex-col gap-1">
+                          <motion.h2
+                            layoutId={`card-title-${project.name}`}
+                            className="text-2xl font-bold"
+                            transition={springTransition}
+                          >
+                            {activeItem.name}
+                          </motion.h2>
+                          <motion.span
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15 }}
+                            className="text-sm text-muted-foreground"
+                          >
+                            Created: {project.createdAt}
+                          </motion.span>
+                        </div>
+                        <motion.div
+                          layoutId={`card-links-${project.name}`}
+                          className="flex gap-2 items-center text-muted-foreground [&_svg]:cursor-pointer [&_svg]:transition-colors [&_svg]:hover:text-primary"
+                          transition={springTransition}
+                        >
+                          <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Live Demo"
+                          >
+                            <HugeiconsIcon icon={LinkCircle02Icon} />
+                          </a>
+                          <a
+                            href={project.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="GitHub"
+                          >
+                            <HugeiconsIcon icon={GithubIcon} />
+                          </a>
+                        </motion.div>
+                      </div>
 
-                {/* Technologies */}
-                <motion.div
-                  layoutId={`card-tech-section-${dummyData.name}`}
-                  className="flex flex-col gap-2"
-                  transition={springTransition}
-                >
-                  <span className="text-sm font-semibold text-muted-foreground">
-                    Technologies
-                  </span>
-                  <div className="flex flex-wrap gap-2 items-center">
-                    {dummyData.technologies.map((tech) => (
-                      <motion.div
-                        layoutId={`card-tech-${tech.name}`}
-                        key={tech.name}
-                        className="flex items-center gap-2"
+                      {/* Description */}
+                      <motion.p
+                        layoutId={`card-description-${project.name}`}
+                        className="text-muted-foreground text-base leading-relaxed"
                         transition={springTransition}
                       >
-                        <tech.icon size={24} />
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
+                        {activeItem.description}
+                      </motion.p>
 
-                {/* Features - Only shown in expanded view */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ delay: 0.2, duration: 0.3 }}
-                  className="flex flex-col gap-3"
-                >
-                  <span className="text-sm font-semibold text-muted-foreground">
-                    Features
-                  </span>
-                  <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
-                    {dummyData.features.map((feature, index) => (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.25 + index * 0.03 }}
-                        className="flex items-start gap-2"
+                      {/* Technologies */}
+                      <motion.div
+                        layoutId={`card-tech-section-${project.name}`}
+                        className="flex flex-col gap-2"
+                        transition={springTransition}
                       >
-                        <span className="text-primary mt-1">•</span>
-                        <span>{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
-        ) : null}
-      </AnimatePresence>
+                        <span className="text-sm font-semibold text-muted-foreground">
+                          Technologies
+                        </span>
+                        <div className="flex flex-wrap gap-2 items-center">
+                          {project.technologies.map((tech) => (
+                            <motion.div
+                              layoutId={`card-tech-${project.name}-${tech.name}-${project.id}`}
+                              key={tech.name}
+                              className="flex items-center gap-2"
+                              transition={springTransition}
+                            >
+                              {React.createElement(tech.icon, { size: 24 })}
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
 
-      {/* Main Card */}
+                      {/* Features - Only shown in expanded view */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ delay: 0.2, duration: 0.3 }}
+                        className="flex flex-col gap-3"
+                      >
+                        <span className="text-sm font-semibold text-muted-foreground">
+                          Features
+                        </span>
+                        <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                          {project.features.map((feature, index) => (
+                            <motion.li
+                              key={index}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.25 + index * 0.03 }}
+                              className="flex items-start gap-2"
+                            >
+                              <span className="text-primary mt-1">•</span>
+                              <span>{feature}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              ) : null}
+            </AnimatePresence>
+          </>,
+          document.body
+        )}
+
+      {/* This is the actual card, that need to be clicked */}
       <motion.div
         onClick={() =>
           setActiveItem({
-            name: dummyData.name,
-            description: dummyData.description,
+            name: project.name,
+            description: project.description,
           })
         }
-        className="relative flex w-full cursor-pointer flex-col items-start overflow-hidden rounded-2xl border bg-background shadow-xl transition-shadow hover:shadow-2xl"
-        layoutId={`card-container-${dummyData.name}`}
+        className="relative flex w-full cursor-pointer flex-col items-start overflow-hidden rounded-xl border bg-background shadow-xl transition-shadow hover:shadow-2xl"
+        layoutId={`card-container-${project.name}`}
         transition={springTransition}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         {/* Image banner */}
         <motion.div
-          layoutId={`card-banner-${dummyData.name}`}
+          layoutId={`card-banner-${project.name}`}
           className="w-full bg-gray-200 aspect-4/3 h-44"
           transition={springTransition}
         />
@@ -343,20 +280,20 @@ export default function ProjectCard() {
         <div className="p-6 flex w-full flex-col gap-4">
           <div className="flex items-center justify-between">
             <motion.span
-              layoutId={`card-title-${dummyData.name}`}
+              layoutId={`card-title-${project.name}`}
               className="text-xl font-semibold"
               transition={springTransition}
             >
-              {dummyData.name}
+              {project.name}
             </motion.span>
             <motion.div
-              layoutId={`card-links-${dummyData.name}`}
+              layoutId={`card-links-${project.name}`}
               className="flex gap-2 items-center text-muted-foreground [&_svg]:cursor-pointer [&_svg]:transition-colors [&_svg]:hover:text-primary"
               transition={springTransition}
               onClick={(e) => e.stopPropagation()}
             >
               <a
-                href={dummyData.live}
+                href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Live Demo"
@@ -364,7 +301,7 @@ export default function ProjectCard() {
                 <HugeiconsIcon icon={LinkCircle02Icon} />
               </a>
               <a
-                href={dummyData.href}
+                href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="GitHub"
@@ -375,15 +312,15 @@ export default function ProjectCard() {
           </div>
 
           <motion.p
-            layoutId={`card-description-${dummyData.name}`}
+            layoutId={`card-description-${project.name}`}
             className="text-muted-foreground text-base text-start line-clamp-3"
             transition={springTransition}
           >
-            {dummyData.description}
+            {project.description}
           </motion.p>
 
           <motion.div
-            layoutId={`card-tech-section-${dummyData.name}`}
+            layoutId={`card-tech-section-${project.name}`}
             className="flex flex-col gap-2 w-full"
             transition={springTransition}
           >
@@ -391,14 +328,14 @@ export default function ProjectCard() {
               Technologies
             </span>
             <div className="flex gap-2 items-center flex-wrap">
-              {dummyData.technologies.map((tech) => (
+              {project.technologies.map((tech) => (
                 <motion.div
-                  layoutId={`card-tech-${tech.name}`}
+                  layoutId={`card-tech-${project.name}-${tech.name}-${project.id}`}
                   key={tech.name}
                   className="flex items-center gap-2"
                   transition={springTransition}
                 >
-                  <tech.icon size={24} />
+                  {React.createElement(tech.icon, { size: 24 })}
                 </motion.div>
               ))}
             </div>
