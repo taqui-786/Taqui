@@ -406,8 +406,8 @@ export const HeroContributionGraph = () => {
   return (
     <div className="max-w-full rounded-lg border bg-background p-4 animate-fade-in-blur">
       {isLoading ? (
-        <div className="flex items-center justify-center min-h-[160px]">
-          <div className="h-full w-full bg-muted animate-pulse rounded" />
+        <div className="flex items-center justify-center h-[160px] w-full">
+          <div className="h-full  w-full bg-muted animate-pulse rounded" />
         </div>
       ) : (
         <ContributionGraph

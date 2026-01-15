@@ -1,9 +1,10 @@
 "use client";
 
+import { ProjectData } from "@/app/config/projectConfig";
 import { GithubIcon, LinkCircle02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, motion } from "motion/react";
-import type { SVGProps } from "react";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useOnClickOutside } from "usehooks-ts";
@@ -19,23 +20,7 @@ export type ProjectListingProps = {
   onProjectClick?: (project: Project) => void;
 };
 
-export type TechStackItem = {
-  name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: React.ComponentType<any>;
-};
 
-export type ProjectData = {
-  id: number;
-  name: string;
-  href: string;
-  live: string;
-  createdAt: string;
-  description: string;
-  features: string[];
-  technologies: TechStackItem[];
-  badge: string[];
-};
 
 export default function ProjectCard({ project }: { project: ProjectData }) {
   const [activeItem, setActiveItem] = useState<Project | null>(null);
@@ -93,10 +78,11 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
   }, [activeItem]);
 
   // Smooth spring transition for layout animations
+  // Lower stiffness for smoother mobile performance
   const springTransition = {
     type: "spring" as const,
-    stiffness: 350,
-    damping: 30,
+    stiffness: 260,
+    damping: 25,
   };
 
   return (
@@ -110,10 +96,11 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               {activeItem ? (
                 <motion.div
                   animate={{ opacity: 1 }}
-                  className="pointer-events-auto fixed inset-0 z-9999 bg-black/40 backdrop-blur-md"
+                  className="pointer-events-auto fixed inset-0 z-9999 bg-black/60"
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.15 }}
+                  style={{ willChange: "opacity" }}
                   onClick={() => setActiveItem(null)}
                 />
               ) : null}
@@ -128,13 +115,21 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                     layoutId={`card-container-${project.name}`}
                     ref={ref}
                     transition={springTransition}
+                    style={{ willChange: "transform" }}
                   >
                     {/* Banner */}
                     <motion.div
                       layoutId={`card-banner-${project.name}`}
-                      className="w-full bg-gray-200 aspect-video shrink-0"
+                      className="w-full bg-gray-200 aspect-video shrink-0 relative"
                       transition={springTransition}
-                    />
+                    >
+                      <Image
+                        src={project.banner}
+                        alt={project.name}
+                        fill
+                        className="object-cover h-full w-auto"
+                      />
+                    </motion.div>
 
                     {/* Scrollable content area */}
                     <motion.div
@@ -206,13 +201,14 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                         <span className="text-sm font-semibold text-muted-foreground">
                           Technologies
                         </span>
-                        <div className="flex flex-wrap gap-2 items-center">
+                        <div className="flex flex-wrap gap-2 items-center relative">
                           {project.technologies.map((tech) => (
                             <motion.div
                               layoutId={`card-tech-${project.name}-${tech.name}-${project.id}`}
                               key={tech.name}
                               className="flex items-center gap-2"
                               transition={springTransition}
+                              title={tech.name}
                             >
                               {React.createElement(tech.icon, { size: 24 })}
                             </motion.div>
@@ -272,9 +268,16 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         {/* Image banner */}
         <motion.div
           layoutId={`card-banner-${project.name}`}
-          className="w-full bg-gray-200 aspect-4/3 h-44"
+          className="w-full bg-gray-200 aspect-4/3 h-44 relative"
           transition={springTransition}
-        />
+        >
+          <Image
+            src={project.banner}
+            alt={project.name}
+            fill
+            className="object-cover h-full w-auto"
+          />
+        </motion.div>
 
         {/* Detail section */}
         <div className="p-6 flex w-full flex-col gap-4">

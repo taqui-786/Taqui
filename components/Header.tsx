@@ -1,6 +1,7 @@
 import GitHubHeaderBtn from "./GithubHeaderBtn";
 import { Link } from "next-view-transitions";
 import { ThemeTogglerButton } from "./animate-ui/components/buttons/theme-toggler";
+import HeaderNavLinks from "./HeaderNavLinks";
 
 function Header() {
   return (
@@ -22,26 +23,7 @@ function Header() {
               />
             </div>{" "}
           </Link>
-          <nav className="flex items-center gap-2 md:gap-4 text">
-            <Link
-              href="/work"
-              className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4"
-            >
-              Work
-            </Link>
-            <Link
-              href="/projects"
-              className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/blogs"
-              className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4"
-            >
-              Blogs
-            </Link>
-          </nav>
+    <HeaderNavLinks/>
         </div>
 
         <div className="flex items-center gap-2">

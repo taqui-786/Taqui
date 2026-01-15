@@ -862,6 +862,3 @@ export const PostgresqlIcon = ({ size }: PostgresqlProps) => (
   </svg>
 );
 
-type DevToLogoThinProps = {
-  size: string;
-};

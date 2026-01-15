@@ -2,10 +2,20 @@ import Image from "next/image";
 import myImage from "../public/taqui-removebg-preview.png";
 import { BlurVignette, BlurVignetteArticle } from "./uilayouts/blur-vignette";
 
-function HeroImageSection() {
+import { getBlurHashFromImageFile } from "@/lib/unpic";
+import path from "path";
+
+async function HeroImageSection() {
+  const imagePath = path.join(
+    process.cwd(),
+    "public",
+    "taqui-removebg-preview.png"
+  );
+const blurHash = await getBlurHashFromImageFile(imagePath)
+  console.log(blurHash);
   return (
     <div className="relative mb-26">
-      <BlurVignette
+      {/* <BlurVignette
         radius="24px"
         inset="10px"
         transitionLength="100px"
@@ -25,7 +35,7 @@ function HeroImageSection() {
           />
         </video>
         <BlurVignetteArticle />
-      </BlurVignette>
+      </BlurVignette> */}
       {/* Profile Image */}
       <div className="absolute -bottom-16 md:left-8 left-4 z-40 group">
         <div className="relative">
@@ -36,7 +46,8 @@ function HeroImageSection() {
               className="object-cover h-full w-full relative z-10 scale-[1.2] translate-y-2.5 translate-x-1"
               src={myImage}
               alt="Taqui Imam"
-              priority
+              placeholder="blur"
+            
             />
 
             <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none"></div>
