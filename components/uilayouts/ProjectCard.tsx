@@ -145,7 +145,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                         <div className="flex flex-col gap-1">
                           <motion.h2
                             layoutId={`card-title-${project.name}`}
-                            className="text-2xl font-bold"
+                            className="text-2xl font-bold text-title"
                             transition={springTransition}
                           >
                             {activeItem.name}
@@ -198,7 +198,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                         className="flex flex-col gap-2"
                         transition={springTransition}
                       >
-                        <span className="text-sm font-semibold text-muted-foreground">
+                        <span className="text-sm font-semibold text-title">
                           Technologies
                         </span>
                         <div className="flex flex-wrap gap-2 items-center relative">
@@ -284,7 +284,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           <div className="flex items-center justify-between">
             <motion.span
               layoutId={`card-title-${project.name}`}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold text-title"
               transition={springTransition}
             >
               {project.name}
@@ -327,7 +327,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             className="flex flex-col gap-2 w-full"
             transition={springTransition}
           >
-            <span className="text-sm font-semibold text-muted-foreground">
+            <span className="text-sm font-semibold text-title">
               Technologies
             </span>
             <div className="flex gap-2 items-center flex-wrap">

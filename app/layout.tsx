@@ -10,6 +10,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { ViewTransitions } from "next-view-transitions";
 import ReactLenis from "lenis/react";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 // const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -48,12 +49,19 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
         >
-          <ReactLenis root>
-            <main className="min-h-dvh">
-              <Header />
-              {children}
-            </main>
-          </ReactLenis>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ReactLenis root>
+              <main className="min-h-dvh">
+                <Header />
+                {children}
+              </main>
+            </ReactLenis>
+          </ThemeProvider>
         </body>
       </html>
     </ViewTransitions>

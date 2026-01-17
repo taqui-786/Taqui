@@ -2,6 +2,7 @@ import GitHubHeaderBtn from "./GithubHeaderBtn";
 import { Link } from "next-view-transitions";
 import { ThemeTogglerButton } from "./animate-ui/components/buttons/theme-toggler";
 import HeaderNavLinks from "./HeaderNavLinks";
+import Image from "next/image";
 
 function Header() {
   return (
@@ -10,26 +11,26 @@ function Header() {
         <div className="flex gap-4">
           <Link href="/">
             <div className="h-12 w-12 rounded-md bg-blue-300 overflow-hidden flex items-end p-0">
-              <img
+        
+                <Image 
+                src={"/taqui-removebg-preview.png"}
                 alt="logo"
                 loading="lazy"
-                width="100"
-                height="100"
-                decoding="async"
-                data-nimg="1"
-                className="h-full w-full object-cover  scale-[1.4] translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:transition-transform [@media(hover:hover)_and_(pointer:fine)]:duration-200 [@media(hover:hover)_and_(pointer:fine)]:ease-[ease] [@media(hover:hover)_and_(pointer:fine)]:hover:scale-125 [@media(hover:hover)_and_(pointer:fine)]:will-change-transform"
-                src="taqui-removebg-preview.png"
-                style={{ backgroundColor: "transparent" }}
+
+                width={100}
+                height={100}
+                 className="h-full w-full object-cover  scale-[1.4] translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:transition-transform [@media(hover:hover)_and_(pointer:fine)]:duration-200 [@media(hover:hover)_and_(pointer:fine)]:ease-[ease] [@media(hover:hover)_and_(pointer:fine)]:hover:scale-125 [@media(hover:hover)_and_(pointer:fine)]:will-change-transform"
+                
               />
             </div>{" "}
           </Link>
-    <HeaderNavLinks/>
+          <HeaderNavLinks />
         </div>
 
         <div className="flex items-center gap-2">
           <GitHubHeaderBtn />
 
-          <ThemeTogglerButton variant={"outline"} size={"lg"} />
+          <ThemeTogglerButton variant={"secondary"} size={"lg"} direction="ttb" />
         </div>
       </div>
     </header>

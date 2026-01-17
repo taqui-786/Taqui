@@ -26,7 +26,7 @@ const  params = usePathname()
                         key={link.label}
                         href={link.href}
                         data-active={params === link.href}
-                        className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4 data-[active=true]:underline-offset-4 data-[active=true]:decoration-2 data-[active=true]:underline"
+                        className="[@media(hover:hover)_and_(pointer:fine)]:hover:underline text-title [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-2 [@media(hover:hover)_and_(pointer:fine)]:hover:underline-offset-4 data-[active=true]:underline-offset-4 data-[active=true]:decoration-2 data-[active=true]:underline"
                     >
                         {link.label}
                     </Link>

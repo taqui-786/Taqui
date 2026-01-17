@@ -4,9 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
-} from "@/components/animate-ui/components/animate/tooltip";
+} from "@/components/ui/tooltip";
 
 export type ContributionData = {
   date: string;
@@ -26,7 +25,7 @@ export type ContributionGraphProps = {
 const WEEKS_IN_YEAR = 53;
 const DAYS_IN_WEEK = 7;
 const CELL_SIZE = 12;
-const CELL_GAP = 4;
+const CELL_GAP = 3;
 const HEADER_HEIGHT = 22;
 
 const MONTHS = [
@@ -223,118 +222,113 @@ export function ContributionGraph({
   }
 
   return (
-    <TooltipProvider openDelay={0}>
+    <div
+      className={`flex w-max max-w-full flex-col gap-2 text-sm ${className}`}
+    >
       <div
-        className={`flex w-max max-w-full flex-col gap-2 text-sm ${className}`}
+        ref={scrollContainerRef}
+        className="max-w-full overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] text-muted-foreground"
       >
-        <div
-          ref={scrollContainerRef}
-          className="max-w-full overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] text-muted-foreground"
+        <svg
+          className="block overflow-visible"
+          height={svgHeight}
+          viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+          width={svgWidth}
         >
-          <svg
-            className="block overflow-visible"
-            height={svgHeight}
-            viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-            width={svgWidth}
-          >
-            <title>Contribution Graph</title>
+          <title>Contribution Graph</title>
 
-            {/* Month headers */}
-            <g className="fill-current">
-              {monthPositions.map((pos, idx) => (
-                <text key={`month-${idx}`} dominantBaseline="hanging" x={pos.x}>
-                  {pos.month}
-                </text>
-              ))}
-            </g>
+          {/* Month headers */}
+          <g className="fill-current">
+            {monthPositions.map((pos, idx) => (
+              <text key={`month-${idx}`} dominantBaseline="hanging" x={pos.x}>
+                {pos.month}
+              </text>
+            ))}
+          </g>
 
-            {/* Day cells */}
-            {yearData.map((week, weekIndex) =>
-              week.map((day, dayIndex) => {
-                if (!day) return null;
+          {/* Day cells */}
+          {yearData.map((week, weekIndex) =>
+            week.map((day, dayIndex) => {
+              if (!day) return null;
 
-                const x = weekIndex * (CELL_SIZE + CELL_GAP);
-                const y = HEADER_HEIGHT + dayIndex * (CELL_SIZE + CELL_GAP);
+              const x = weekIndex * (CELL_SIZE + CELL_GAP);
+              const y = HEADER_HEIGHT + dayIndex * (CELL_SIZE + CELL_GAP);
 
-                const rect = (
+              const rect = (
+                <rect
+                  className="data-[level='0']:fill-muted cursor-pointer data-[level='1']:fill-primary/20 data-[level='2']:fill-primary/40 data-[level='3']:fill-primary/60 data-[level='4']:fill-primary/80"
+                  data-count={day.count}
+                  data-date={day.date}
+                  data-level={day.level}
+                  height={CELL_SIZE}
+                  rx={2}
+                  ry={2}
+                  width={CELL_SIZE}
+                  x={x}
+                  y={y}
+                />
+              );
+
+              if (!showTooltips) {
+                return (
+                  <g key={`${day.date}-${weekIndex}-${dayIndex}`}>{rect}</g>
+                );
+              }
+
+              return (
+                <Tooltip key={`${day.date}-${weekIndex}-${dayIndex}`} >
+                  <TooltipTrigger asChild>
+                    <g className="cursor-pointer">{rect}</g>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-primary  text-white px-2.5 py-1.5 rounded-md shadow-lg">
+                    <div className="flex flex-col gap-0.5">
+                      <div className="font-semibold text-[13px]">
+                        {day.date}
+                      </div>
+                      <div className="text-[12px] text-neutral-300">
+                        {getContributionText(day.count)}
+                      </div>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              );
+            })
+          )}
+        </svg>
+      </div>
+
+      {/* Footer with total and legend */}
+      {showLegend && (
+        <div className="flex items-center justify-between text-[11px]">
+          {/* Total activities */}
+          <span className="text-muted-foreground">
+            Total <b>{totalContributions}</b> contributions
+          </span>
+
+          {/* Legend */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-muted-foreground">Less</span>
+            <div className="flex items-center gap-[3px]">
+              {CONTRIBUTION_LEVELS.map((level) => (
+                <svg key={level} width={CELL_SIZE} height={CELL_SIZE}>
                   <rect
-                    className="data-[level='0']:fill-muted data-[level='1']:fill-muted-foreground/20 data-[level='2']:fill-muted-foreground/40 data-[level='3']:fill-muted-foreground/60 data-[level='4']:fill-muted-foreground/80"
-                    data-count={day.count}
-                    data-date={day.date}
-                    data-level={day.level}
+                    className="data-[level='0']:fill-muted data-[level='1']:fill-primary/20 data-[level='2']:fill-primary/40 data-[level='3']:fill-primary/60 data-[level='4']:fill-primary/80"
+                    data-level={level}
                     height={CELL_SIZE}
                     rx={2}
                     ry={2}
                     width={CELL_SIZE}
-                    x={x}
-                    y={y}
+                    x={0}
+                    y={0}
                   />
-                );
-
-                if (!showTooltips) {
-                  return (
-                    <g key={`${day.date}-${weekIndex}-${dayIndex}`}>{rect}</g>
-                  );
-                }
-
-                return (
-                  <Tooltip
-                    key={`${day.date}-${weekIndex}-${dayIndex}`}
-                    sideOffset={8}
-                  >
-                    <TooltipTrigger asChild>
-                      <g className="cursor-pointer">{rect}</g>
-                    </TooltipTrigger>
-                    <TooltipContent className="bg-neutral-900 dark:bg-neutral-950 border-neutral-800 text-white px-2.5 py-1.5 rounded-md shadow-lg">
-                      <div className="flex flex-col gap-0.5">
-                        <div className="font-semibold text-[13px]">
-                          {day.date}
-                        </div>
-                        <div className="text-[12px] text-neutral-300">
-                          {getContributionText(day.count)}
-                        </div>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                );
-              })
-            )}
-          </svg>
-        </div>
-
-        {/* Footer with total and legend */}
-        {showLegend && (
-          <div className="flex items-center justify-between text-[11px]">
-            {/* Total activities */}
-            <span className="text-muted-foreground">
-              Total <b>{totalContributions}</b> contributions
-            </span>
-
-            {/* Legend */}
-            <div className="flex items-center gap-1.5">
-              <span className="text-muted-foreground">Less</span>
-              <div className="flex items-center gap-[3px]">
-                {CONTRIBUTION_LEVELS.map((level) => (
-                  <svg key={level} width={CELL_SIZE} height={CELL_SIZE}>
-                    <rect
-                      className="data-[level='0']:fill-muted data-[level='1']:fill-muted-foreground/20 data-[level='2']:fill-muted-foreground/40 data-[level='3']:fill-muted-foreground/60 data-[level='4']:fill-muted-foreground/80"
-                      data-level={level}
-                      height={CELL_SIZE}
-                      rx={2}
-                      ry={2}
-                      width={CELL_SIZE}
-                      x={0}
-                      y={0}
-                    />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-muted-foreground">More</span>
+                </svg>
+              ))}
             </div>
+            <span className="text-muted-foreground">More</span>
           </div>
-        )}
-      </div>
-    </TooltipProvider>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -404,7 +398,7 @@ export const HeroContributionGraph = () => {
   }, []);
 
   return (
-    <div className="max-w-full rounded-lg border bg-background p-4 animate-fade-in-blur">
+    <div className="max-w-full rounded-lg  bg-background  animate-fade-in-blur">
       {isLoading ? (
         <div className="flex items-center justify-center h-[160px] w-full">
           <div className="h-full  w-full bg-muted animate-pulse rounded" />
