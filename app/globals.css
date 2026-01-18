@@ -6,6 +6,7 @@
 
 @theme inline {
   --color-title: var(--color-title);
+  --color-subtle: var(--color-foreground-subtle);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -50,14 +51,15 @@
 }
 
 :root {
-  --color-title:oklch(0.32 0 0);
+  --color-title: oklch(0.32 0 0);
+  --color-foreground-subtle: oklch(0.55 0.02 285.93);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.4420 0.0170 285.7861);
+  --primary: oklch(0.442 0.017 285.7861);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -86,19 +88,20 @@
 }
 
 .dark {
-   --color-title:oklch(0.94 0 0);
+  --color-title: oklch(0.94 0 0);
+  --color-foreground-subtle: oklch(0.68 0 0);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary:  oklch(0.83 0 0);
+  --primary: oklch(0.83 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted-foreground: oklch(0.87 0 0);
   --accent: oklch(0.371 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
@@ -151,20 +154,11 @@
       radial-gradient(at bottom left, var(--corner-gradient)),
       radial-gradient(at top left, var(--corner-gradient)),
       radial-gradient(at top right, var(--corner-gradient));
-    -webkit-mask-size:
-      100% var(--fill-narrow-size),
-      var(--fill-narrow-size) 100%,
-      var(--corner-size),
-      var(--corner-size),
-      var(--corner-size),
-      var(--corner-size);
-    -webkit-mask-position:
-      0 var(--fill-farther-position),
-      var(--fill-farther-position) 0,
-      0 0,
-      100% 0,
-      100% 100%,
-      0 100%;
+    -webkit-mask-size: 100% var(--fill-narrow-size),
+      var(--fill-narrow-size) 100%, var(--corner-size), var(--corner-size),
+      var(--corner-size), var(--corner-size);
+    -webkit-mask-position: 0 var(--fill-farther-position),
+      var(--fill-farther-position) 0, 0 0, 100% 0, 100% 100%, 0 100%;
     -webkit-mask-repeat: no-repeat;
   }
 }

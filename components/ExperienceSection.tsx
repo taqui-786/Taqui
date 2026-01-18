@@ -1,8 +1,18 @@
 import Link from "next/link";
-import React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "./ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowUpRight03Icon } from "@hugeicons/core-free-icons";
+import {
+  ArrowDown01Icon,
+  ArrowUp01Icon,
+  ArrowUpRight03Icon,
+} from "@hugeicons/core-free-icons";
+import Image from "next/image";
 
 function ExperienceSection() {
   return (
@@ -17,20 +27,76 @@ function ExperienceSection() {
         </div>
       </div>
       <div className="flex flex-col w-full gap-4 mt-8">
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full"
+          defaultValue="item-1"
+        >
+          <AccordionItem value="item-1">
+            <AccordionTrigger>
+              {" "}
+              <div className=" w-full px-3 py-2 hover:bg-muted transition-all duration-300 flex items-center justify-between rounded-lg">
+                <div className="flex gap-4">
+                  <div className="border border-dashed dark:border-white/30 border-black/20 rounded-lg p-1">
+                    <div className="h-12 w-12 bg-muted rounded-lg overflow-hidden relative">
+                      <Image 
+                      src={'/lightwork_ai_official_logo.jpg'}
+                      alt="Lightwork Ai"
+                      fill
+                      className="object-cover size-full "
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col w-fit items-start justify-center gap-2">
+                    <div className="flex items-center gap-2">
+
+                    <h3 className="sm:text-[1.20rem] text-[1.05rem] leading-[0.90] font-semibold text-title ">
+                      Lighwork Ai
+                    </h3>
+                    <span className="px-[4px]  py-0 text-xs font-medium border border-border text-mutedForeground rounded-[4px]">Full Time</span>
+                    </div>
+                    <p className="sm:text-sm text-xs text-color-subtle">
+                      Full Stack Developer
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start justify-center w-fit">
+                  <div className="flex flex-col items-end justify-center gap-2">
+                    <p className="text-title font-semibold sm:text-sm text-xs ">
+                      Oct 2024 - Mar 2025
+                    </p>
+                    <p className="sm:text-sm text-xs text-foreground-subtle">
+                      USA - Remote
+                    </p>
+                  </div>
+                  <HugeiconsIcon
+                    icon={ArrowDown01Icon}
+                    strokeWidth={2}
+                    data-slot="accordion-trigger-icon"
+                    className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
+                  />
+                  <HugeiconsIcon
+                    icon={ArrowUp01Icon}
+                    strokeWidth={2}
+                    data-slot="accordion-trigger-icon"
+                    className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+                  />
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-4  ">
+             <ul className="list-disc list-inside text-balance text-muted-foreground  leading-relaxed tracking-wide text-sm">
+              <li className="">Buid many AI models there</li>
+              <li className="">Buid many AI models there</li>
+              <li className="">Buid many AI models there</li>
+              <li className="">Buid many AI models there</li>
+              <li className="">Buid many AI models there</li>
+             </ul>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
         {/* Heree to add  */}
-        <div className="border w-full p-2 flex items-center justify-between rounded-lg">
-          <div className="flex gap-4">
-            <div className="h-16 w-16 bg-muted rounded-lg overflow-hidden relative"></div>
-            <div className="flex flex-col w-fit items-start justify-center gap-2">
-              <h3 className="sm:text-[1.20rem] text-[1.05rem] leading-[0.90] font-semibold text-title ">Lighwork Ai</h3>
-             <p className="sm:text-sm text-xs text-muted-foreground">Full Stack Developer</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-end justify-center gap-2">
-            <p className="text-title font-semibold sm:text-sm text-xs ">Oct 2024 - Mar 2025</p>
-            <p className="sm:text-sm text-xs text-muted-foreground">Full Time | Remote</p>
-          </div>
-        </div>
       </div>
       <div className="flex items-center justify-center mt-6">
         <Link
