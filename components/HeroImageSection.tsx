@@ -4,7 +4,7 @@ import myImage from "../public/taqui-removebg-preview.png";
 function HeroImageSection() {
   return (
     <div className="relative mb-26 animate-fade-in-up">
-      <div className="p-[2px] border border-border rounded-2xl size-auto">
+      <div className="p-[2px] border border-dashed dark:border-white/30 border-black/20 rounded-2xl size-auto">
         <div className="h-76 w-full relative  overflow-hidden">
           <Image
             src={"/testBannerHero3.jpg"}

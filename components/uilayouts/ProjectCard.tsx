@@ -1,13 +1,18 @@
 "use client";
 
 import { ProjectData } from "@/app/config/projectConfig";
-import { GithubIcon, LinkCircle02Icon } from "@hugeicons/core-free-icons";
+import {
+  ArrowExpandIcon,
+  GithubIcon,
+  LinkCircle02Icon,
+} from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useOnClickOutside } from "usehooks-ts";
+import { Button } from "../ui/button";
 
 export type Project = {
   name: string;
@@ -19,8 +24,6 @@ export type ProjectListingProps = {
   className?: string;
   onProjectClick?: (project: Project) => void;
 };
-
-
 
 export default function ProjectCard({ project }: { project: ProjectData }) {
   const [activeItem, setActiveItem] = useState<Project | null>(null);
@@ -252,6 +255,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         )}
 
       {/* This is the actual card, that need to be clicked */}
+
       <motion.div
         onClick={() =>
           setActiveItem({
@@ -259,28 +263,35 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             description: project.description,
           })
         }
-        className="relative flex w-full cursor-pointer flex-col items-start overflow-hidden rounded-xl border bg-background shadow-xl transition-shadow hover:shadow-2xl"
+        className="relative flex w-full cursor-pointer flex-col items-start overflow-hidden rounded-xl group/image"
         layoutId={`card-container-${project.name}`}
         transition={springTransition}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         {/* Image banner */}
-        <motion.div
-          layoutId={`card-banner-${project.name}`}
-          className="w-full bg-gray-200 aspect-4/3 h-44 relative"
-          transition={springTransition}
-        >
-          <Image
-            src={project.banner}
-            alt={project.name}
-            fill
-            className="object-cover h-full w-auto"
-          />
-        </motion.div>
-
+        <div className="p-1 rounded-xl  w-full border border-dashed dark:border-white/30 border-black/20 ">
+          <motion.div
+            layoutId={`card-banner-${project.name}`}
+            className="w-full bg-gray-200 aspect-4/3 h-44 relative rounded-xl overflow-hidden "
+            transition={springTransition}
+          >
+            <Image
+              src={project.banner}
+              alt={project.name}
+              fill
+              className="object-cover h-full w-auto"
+            />
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="text-white font-medium text-sm">
+                Click to expand
+              </span>
+            </div>
+          </motion.div>
+        </div>
         {/* Detail section */}
-        <div className="p-6 flex w-full flex-col gap-4">
+        <div className="px-2 py-3 flex w-full flex-col gap-4">
           <div className="flex items-center justify-between">
             <motion.span
               layoutId={`card-title-${project.name}`}
@@ -295,6 +306,19 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
               transition={springTransition}
               onClick={(e) => e.stopPropagation()}
             >
+              <Button
+                variant="ghost"
+                size={"icon-lg"}
+                    onClick={() =>
+          setActiveItem({
+            name: project.name,
+            description: project.description,
+          })
+        }
+                className="flex sm:hidden p-0 w-fit h-fit size-6 m-0"
+              >
+                <HugeiconsIcon icon={ArrowExpandIcon} />
+              </Button>
               <a
                 href={project.live}
                 target="_blank"

@@ -280,12 +280,12 @@ export function ContributionGraph({
                   <TooltipTrigger asChild>
                     <g className="cursor-pointer">{rect}</g>
                   </TooltipTrigger>
-                  <TooltipContent className="bg-primary  text-white px-2.5 py-1.5 rounded-md shadow-lg">
+                  <TooltipContent className="bg-primary  text-white dark:text-black px-2.5 py-1.5 rounded-md shadow-lg">
                     <div className="flex flex-col gap-0.5">
                       <div className="font-semibold text-[13px]">
                         {day.date}
                       </div>
-                      <div className="text-[12px] text-neutral-300">
+                      <div className="text-[12px] text-neutral-300 dark:text-neutral-700">
                         {getContributionText(day.count)}
                       </div>
                     </div>

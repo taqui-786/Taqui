@@ -74,7 +74,7 @@ export const allProjects: ProjectData[] = [
     live: "https://tweetz.app/",
     createdAt: "20-08-2025",
     featured: true,
-    banner: "/project_banners/tweetz_baner.png",
+    banner: "/project_banners/tweetz_banner.png",
     description:
       "Tweetz.app is an AI-assisted Twitter posting with one-tap Telegram approvals with learning and editing features",
     features: [
