@@ -11,31 +11,32 @@ import {
 function HeroBio() {
   return (
     <div className="text-base md:text-lg text-muted-foreground leading-10 animate-fade-in-blur">
-      I'm a <b className="text-title ">Full Stack</b> web
-      Developer builds interactive web{" "}
-      <b className="text-title ">app</b> using{" "}
-      <CustomBadge href="/" name="Typescript">
+      I'm a <b className="text-title ">Full Stack</b> web Developer builds
+      interactive web <b className="text-title ">app</b> using{" "}
+      <CustomBadge href="https://www.typescriptlang.org/" name="Typescript">
         <TypescriptIcon size={18} />
-      </CustomBadge>
-       {" "},{" "}
-      <CustomBadge href="/" name="React">
+      </CustomBadge>{" "}
+      ,{" "}
+      <CustomBadge href="https://react.dev/" name="React">
         <ReactIcon size={18} />
-      </CustomBadge>
-      {" "},{" "}
-      <CustomBadge href="/" name="Nextjs">
+      </CustomBadge>{" "}
+      ,{" "}
+      <CustomBadge href="https://nextjs.org/" name="Nextjs">
         <NextjsIcon size={18} />
-      </CustomBadge>
-      {" "},{" "}
-      <CustomBadge href="/" name="Tanstack Query">
+      </CustomBadge>{" "}
+      ,{" "}
+      <CustomBadge
+        href="https://tanstack.com/query/latest"
+        name="Tanstack Query"
+      >
         <ReactQueryIcon size={18} />
       </CustomBadge>{" "}
       and{" "}
-      <CustomBadge href="/" name="Postgresql">
+      <CustomBadge href="https://www.postgresql.org/" name="Postgresql">
         <PostgresqlIcon size={18} />
       </CustomBadge>{" "}
-      . My main focus is <b className="text-title ">UI</b>{" "}
-      design, performance, and interfaces{" "}
-      <b className="text-title ">users</b> actually enjoy using.
+      . My main focus is <b className="text-title ">UI</b> design, performance,
+      and interfaces <b className="text-title ">users</b> actually enjoy using.
     </div>
   );
 }

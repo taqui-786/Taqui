@@ -1,11 +1,6 @@
 import { techStack } from "./techstack";
 
-export type TechStackItem = {
-  name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: React.ComponentType<any>;
-};
-
+type TechStackItem = (typeof techStack)[keyof typeof techStack];
 export type ProjectData = {
   id: number;
   name: string;
@@ -45,6 +40,8 @@ export const allProjects: ProjectData[] = [
     technologies: [
       techStack.nextjs,
       techStack.typescript,
+      techStack.nodejs,
+      techStack.express,
       techStack.postgres,
       techStack.shadcnui,
       techStack.tanstackquery,
@@ -107,6 +104,7 @@ export const allProjects: ProjectData[] = [
       techStack.tailwindcss,
       techStack.shadcnui,
       techStack.tanstackquery,
+      techStack.etc,
     ],
   },
   {

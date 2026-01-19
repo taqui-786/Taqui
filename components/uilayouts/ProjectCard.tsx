@@ -214,7 +214,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                               transition={springTransition}
                               title={tech.name}
                             >
-                              <CustomBadge key={tech.name} href={'/'} name={tech.name}><tech.icon  size={18}  /></CustomBadge>
+                              <CustomBadge key={tech.name} href={tech.link} name={tech.name}><tech.icon  size={18}  /></CustomBadge>
                             </motion.div>
                           ))}
                         </div>
@@ -363,7 +363,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                   className="flex items-center gap-2"
                   transition={springTransition}
                 >
-                  {React.createElement(tech.icon, { size: 24 })}
+                  <tech.icon size={24} />
                 </motion.div>
               ))}
             </div>
