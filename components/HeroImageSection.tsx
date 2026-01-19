@@ -4,14 +4,16 @@ import myImage from "../public/taqui-removebg-preview.png";
 function HeroImageSection() {
   return (
     <div className="relative mb-26 animate-fade-in-up">
-      <div className="p-[2px] border border-dashed dark:border-white/30 border-black/20 rounded-2xl size-auto">
-        <div className="h-76 w-full relative  overflow-hidden">
+      <div className="p-1  border border-dashed dark:border-white/30 border-black/20 rounded-2xl size-auto">
+        <div className="h-76 w-full relative  overflow-hidden rounded-xl border border-border">
           <Image
             src={"/testBannerHero3.jpg"}
             alt="Taqui Imam"
-            className="w-auto h-full object-cover rounded-2xl "
+            className="w-auto h-full object-cover hover:scale-105 transition-all duration-300 "
             fill
             loading="lazy"
+            placeholder="blur"
+            blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMklEQVR4nAEnANj/APH//+7++tjo4J+vpwCjs6tQZl00TUMmPzcAABgMAA0BEjEnES4muU4P4HViC4oAAAAASUVORK5CYII="}
           />
         </div>
       </div>
@@ -30,6 +32,9 @@ function HeroImageSection() {
     transition-all duration-300 ease-in-out
   "
               src={myImage}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVR4nGNgYGBgSPd1yJxaGZ8LYoPBz51Tt/z/cGgpjM/TmBFzd35jAURAXFxcxdnZcYe7u/t0BgYGZgBY6BFDJ12G1gAAAABJRU5ErkJggg=="}
               alt="Taqui Imam"
             />
 

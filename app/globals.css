@@ -6,7 +6,7 @@
 
 @theme inline {
   --color-title: var(--color-title);
-  --color-subtle: var(--color-foreground-subtle);
+  --color-subtle: var(--color-subtle);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -52,7 +52,7 @@
 
 :root {
   --color-title: oklch(0.32 0 0);
-  --color-foreground-subtle: oklch(0.55 0.02 285.93);
+  --color-subtle: oklch(0.55 0.02 285.93);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -89,7 +89,7 @@
 
 .dark {
   --color-title: oklch(0.94 0 0);
-  --color-foreground-subtle: oklch(0.68 0 0);
+  --color-subtle: oklch(0.68 0 0);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

@@ -13,6 +13,9 @@ import {
   ArrowUpRight03Icon,
 } from "@hugeicons/core-free-icons";
 import Image from "next/image";
+import { CustomBadge } from "./ui/custom-badge";
+import { experienceConfig } from "@/app/config/experienceConfig";
+import React from "react";
 
 function ExperienceSection() {
   return (
@@ -31,79 +34,100 @@ function ExperienceSection() {
           type="single"
           collapsible
           className="w-full"
-          defaultValue="item-1"
         >
-          <AccordionItem value="item-1">
-            <AccordionTrigger>
-              {" "}
-              <div className=" w-full px-3 py-2 hover:bg-muted transition-all duration-300 flex items-center justify-between rounded-lg">
-                <div className="flex gap-4">
-                  <div className="border border-dashed dark:border-white/30 border-black/20 rounded-lg p-1">
-                    <div className="h-12 w-12 bg-muted rounded-lg overflow-hidden relative">
-                      <Image 
-                      src={'/lightwork_ai_official_logo.jpg'}
-                      alt="Lightwork Ai"
-                      fill
-                      className="object-cover size-full "
-                      />
+          {experienceConfig.map((item, index) => (
+            <AccordionItem value={`item-${index}`} key={`item-${index}`}>
+              <AccordionTrigger>
+                {" "}
+                <div className=" w-full px-3 py-2 hover:bg-muted transition-all duration-300 flex items-center justify-between rounded-lg">
+                  <div className="flex gap-4">
+                    <div className="border border-dashed dark:border-white/30 border-black/20 rounded-[10px] p-[2px]">
+                      <div className="h-12 w-12 bg-muted rounded-[8px] overflow-hidden relative border border-border">
+                        <Image
+                          src={item.logo}
+                          alt={item.company}
+                          fill
+                          className="object-cover size-full "
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-col w-fit items-start justify-center gap-2">
+                      <div className="flex items-center gap-2">
+                        <h3 className="sm:text-[1.20rem] text-[1.05rem] leading-[0.90] font-semibold text-title ">
+                          {item.company}
+                        </h3>
+                        <span className="px-[4px]  py-0 text-xs font-medium border border-border text-muted-foreground rounded-[4px]">
+                          {item.time}
+                        </span>
+                      </div>
+                      <p className="sm:text-sm text-lg text-muted-foreground font-normal">
+                        {item.position}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex flex-col w-fit items-start justify-center gap-2">
-                    <div className="flex items-center gap-2">
-
-                    <h3 className="sm:text-[1.20rem] text-[1.05rem] leading-[0.90] font-semibold text-title ">
-                      Lighwork Ai
-                    </h3>
-                    <span className="px-[4px]  py-0 text-xs font-medium border border-border text-mutedForeground rounded-[4px]">Full Time</span>
+                  <div className="flex gap-4 items-start justify-center w-fit">
+                    <div className="flex flex-col items-end justify-center gap-2">
+                      <p className="text-title font-semibold sm:text-sm text-xs ">
+                        {item.duration}
+                      </p>
+                      <p className="sm:text-sm text-lg font-normal text-muted-foreground">
+                        {item.location}
+                      </p>
                     </div>
-                    <p className="sm:text-sm text-xs text-color-subtle">
-                      Full Stack Developer
-                    </p>
+                    <HugeiconsIcon
+                      icon={ArrowDown01Icon}
+                      strokeWidth={2}
+                      data-slot="accordion-trigger-icon"
+                      className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
+                    />
+                    <HugeiconsIcon
+                      icon={ArrowUp01Icon}
+                      strokeWidth={2}
+                      data-slot="accordion-trigger-icon"
+                      className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+                    />
                   </div>
                 </div>
-                <div className="flex gap-4 items-start justify-center w-fit">
-                  <div className="flex flex-col items-end justify-center gap-2">
-                    <p className="text-title font-semibold sm:text-sm text-xs ">
-                      Oct 2024 - Mar 2025
-                    </p>
-                    <p className="sm:text-sm text-xs text-foreground-subtle">
-                      USA - Remote
-                    </p>
+              </AccordionTrigger>
+              <AccordionContent className="flex flex-col gap-4 w-full  h-fit  ">
+                <ul className="list-disc list-inside text-balance text-muted-foreground  leading-relaxed tracking-wide text-sm">
+                  {item.description.map((desc, index) => (
+                    <li
+                      className="marker:text-muted-foreground/80 "
+                      key={index}
+                    >
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-col items-start justify-center gap-1">
+                  <h3 className="text-title font-semibold sm:text-sm text-xs ">
+                    Tech Stack
+                  </h3>
+                  <div className="p-2 inline-flex flex-wrap gap-2 ">
+                    {item.technologies.map((techstack) => (
+                      <CustomBadge
+                        key={techstack.name}
+                        href={"/"}
+                        name={techstack.name}
+                      >
+                        <techstack.icon size={18} />
+                      </CustomBadge>
+                    ))}
                   </div>
-                  <HugeiconsIcon
-                    icon={ArrowDown01Icon}
-                    strokeWidth={2}
-                    data-slot="accordion-trigger-icon"
-                    className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
-                  />
-                  <HugeiconsIcon
-                    icon={ArrowUp01Icon}
-                    strokeWidth={2}
-                    data-slot="accordion-trigger-icon"
-                    className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
-                  />
                 </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="flex flex-col gap-4  ">
-             <ul className="list-disc list-inside text-balance text-muted-foreground  leading-relaxed tracking-wide text-sm">
-              <li className="">Buid many AI models there</li>
-              <li className="">Buid many AI models there</li>
-              <li className="">Buid many AI models there</li>
-              <li className="">Buid many AI models there</li>
-              <li className="">Buid many AI models there</li>
-             </ul>
-            </AccordionContent>
-          </AccordionItem>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
-        {/* Heree to add  */}
       </div>
+      {/* Heree to add  */}
       <div className="flex items-center justify-center mt-6">
         <Link
           href={"/work"}
-          className="p-[2px] group border border-dashed dark:border-white/30 border-black/20  rounded-lg"
+          className="p-[2px] group border border-dashed dark:border-white/30 border-black/20  rounded-[10px]"
         >
-          <Button className="rounded-lg [&_svg]:group-hover:rotate-45 transition-all duration-300">
+          <Button className="rounded-[10px] [&_svg]:group-hover:rotate-45 transition-all duration-300">
             See all experience <HugeiconsIcon icon={ArrowUpRight03Icon} />
           </Button>
         </Link>

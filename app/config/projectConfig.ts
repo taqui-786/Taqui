@@ -1,28 +1,5 @@
-import {
-  JavascriptIcon,
-  Auth0Icon,
-  BunIcon,
-  DrizzleIcon,
-  TypescriptIcon,
-  NextjsIcon,
-  NodejsIconIcon,
-  NestjsIcon,
-  ReactQueryIcon,
-  ReduxIcon,
-  ReactRouterIcon,
-  ReactnavigationIcon,
-  ShadcnuiIcon,
-  TailwindcssIcon,
-  FileTypeReactjsIcon,
-  GitIcon,
-  DockerIcon,
-  MysqlDarkIcon,
-  MongodbIcon,
-  RedisIcon,
-  PostgresqlIcon,
-  PrismaIcon,
-  OpenaiIcon,
-} from "@/components/customIcons";
+import { techStack } from "./techstack";
+
 export type TechStackItem = {
   name: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,31 +18,7 @@ export type ProjectData = {
   features: string[];
   technologies: TechStackItem[];
 };
-const techStack = {
-  javascript: { name: "JavaScript", icon: JavascriptIcon },
-  typescript: { name: "TypeScript", icon: TypescriptIcon },
-  reactjs: { name: "Reactjs", icon: FileTypeReactjsIcon },
-  nextjs: { name: "Nextjs", icon: NextjsIcon },
-  nodejs: { name: "Nodejs", icon: NodejsIconIcon },
-  nestjs: { name: "NestJs", icon: NestjsIcon },
 
-  tailwindcss: { name: "TailwindCSS", icon: TailwindcssIcon },
-  shadcnui: { name: "Shadcn Ui", icon: ShadcnuiIcon },
-  oauth: { name: "OAuth", icon: Auth0Icon },
-  tanstackquery: { name: "TanStack Query", icon: ReactQueryIcon },
-  reactredux: { name: "React-Redux", icon: ReduxIcon },
-  reactrouter: { name: "React-Router", icon: ReactRouterIcon },
-  reactnavigation: { name: "React-Navigation", icon: ReactnavigationIcon },
-  git: { name: "Git", icon: GitIcon },
-  docker: { name: "Docker", icon: DockerIcon },
-  mysql: { name: "My Sql", icon: MysqlDarkIcon },
-  mongodb: { name: "MongoDB", icon: MongodbIcon },
-  redis: { name: "Redis", icon: RedisIcon },
-  postgres: { name: "Postgres", icon: PostgresqlIcon },
-  prisma: { name: "Prisma ORM", icon: PrismaIcon },
-  drizzle: { name: "Drizzle ORM", icon: DrizzleIcon },
-  openai: { name: "Chat GPT", icon: OpenaiIcon },
-};
 export const allProjects: ProjectData[] = [
   {
     id: 1,

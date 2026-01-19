@@ -13,6 +13,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useOnClickOutside } from "usehooks-ts";
 import { Button } from "../ui/button";
+import { CustomBadge } from "../ui/custom-badge";
 
 export type Project = {
   name: string;
@@ -213,7 +214,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
                               transition={springTransition}
                               title={tech.name}
                             >
-                              {React.createElement(tech.icon, { size: 24 })}
+                              <CustomBadge key={tech.name} href={'/'} name={tech.name}><tech.icon  size={18}  /></CustomBadge>
                             </motion.div>
                           ))}
                         </div>
@@ -263,17 +264,17 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             description: project.description,
           })
         }
-        className="relative flex w-full cursor-pointer flex-col items-start overflow-hidden rounded-xl group/image"
+        className="relative flex w-full cursor-pointer flex-col items-start overflow-hidden  group/image"
         layoutId={`card-container-${project.name}`}
         transition={springTransition}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         {/* Image banner */}
-        <div className="p-1 rounded-xl  w-full border border-dashed dark:border-white/30 border-black/20 ">
+        <div className="p-1 rounded-[10px]  w-full border border-dashed dark:border-white/30 border-black/20 ">
           <motion.div
             layoutId={`card-banner-${project.name}`}
-            className="w-full bg-gray-200 aspect-4/3 h-44 relative rounded-xl overflow-hidden "
+            className="w-full bg-gray-200 aspect-4/3 h-44 relative rounded-[8px] border  border-border overflow-hidden "
             transition={springTransition}
           >
             <Image

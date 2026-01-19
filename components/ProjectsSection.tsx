@@ -26,8 +26,8 @@ function ProjectsSection() {
         ))}
       </div>
       <div className="flex items-center justify-center mt-6">
-        <Link href={'/projects'} className="p-[2px] group dark:border-white/30 border-black/20 border border-dashed rounded-lg">
-        <Button className="rounded-lg [&_svg]:group-hover:rotate-45 transition-all duration-300">See all projects <HugeiconsIcon icon={ArrowUpRight03Icon} /></Button>
+        <Link href={'/projects'} className="p-[2px] group dark:border-white/30 border-black/20 border border-dashed rounded-[10px]">
+        <Button className="rounded-[10px] [&_svg]:group-hover:rotate-45 transition-all duration-300">See all projects <HugeiconsIcon icon={ArrowUpRight03Icon} /></Button>
         </Link>
       </div>
     </div>

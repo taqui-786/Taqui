@@ -10,7 +10,7 @@ import {
   type ThemeSelection,
   type Resolved,
 } from "@/components/animate-ui/primitives/effects/theme-toggler";
-import { buttonVariants } from "@/components/animate-ui/components/buttons/icon";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const getIcon = (resolved: Resolved) => {
