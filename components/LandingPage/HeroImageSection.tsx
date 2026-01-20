@@ -1,5 +1,4 @@
 import Image from "next/image";
-import myImage from "../public/taqui-removebg-preview.png";
 
 function HeroImageSection() {
   return (
@@ -31,8 +30,9 @@ function HeroImageSection() {
      hover:opacity-100
     transition-all duration-300 ease-in-out
   "
-              src={myImage}
+              src={'/taqui-removebg-preview.png'}
               loading="lazy"
+              fill
               placeholder="blur"
               blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVR4nGNgYGBgSPd1yJxaGZ8LYoPBz51Tt/z/cGgpjM/TmBFzd35jAURAXFxcxdnZcYe7u/t0BgYGZgBY6BFDJ12G1gAAAABJRU5ErkJggg=="}
               alt="Taqui Imam"

@@ -1,6 +1,6 @@
 import { techstackConfig } from "@/app/config/techstackConfig";
 import React from "react";
-import { CustomBadge } from "./ui/custom-badge";
+import { CustomBadge } from "../ui/custom-badge";
 
 function TechStackSection() {
   return (

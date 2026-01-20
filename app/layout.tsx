@@ -7,7 +7,7 @@ import {
   Hanken_Grotesk,
 } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/ui/Header";
 import { ViewTransitions } from "next-view-transitions";
 import ReactLenis from "lenis/react";
 import { ThemeProvider } from "@/components/ui/theme-provider";

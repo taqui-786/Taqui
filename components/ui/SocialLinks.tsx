@@ -16,7 +16,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./animate-ui/components/animate/tooltip";
+} from "../animate-ui/components/animate/tooltip";
 function SocialLinks() {
   const socialLinks = [
     {

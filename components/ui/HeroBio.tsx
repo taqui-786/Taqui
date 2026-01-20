@@ -1,12 +1,12 @@
 import React from "react";
-import { CustomBadge } from "./ui/custom-badge";
+import { CustomBadge } from "./custom-badge";
 import {
   NextjsIcon,
   PostgresqlIcon,
   ReactIcon,
   ReactQueryIcon,
   TypescriptIcon,
-} from "./customIcons";
+} from "../customIcons";
 
 function HeroBio() {
   return (

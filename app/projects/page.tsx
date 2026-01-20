@@ -10,6 +10,25 @@ function page() {
             <p className="md:text-lg text-base text-muted-foreground tracking-wider text-center ">Here are all my projects and what I have done so far</p>
           </div>
           <ProjectFeed/>
+          <div className="flex flex-wrap items-center gap-2 p-3 justify-center ">
+        <p className="text-muted-foreground flex items-center gap-1">
+          <span className="hidden sm:block">
+            For more interesting projects, visit my
+          </span>
+          <span className="block sm:hidden">For more projects, visit my</span>
+          <a
+            className="group text-title transition-colors select-none font-medium duration-300 inline-flex items-center"
+            target="_blank"
+            href="https://github.com/taqui-786"
+          >
+            <span className="relative">
+              Github
+              <span className="absolute left-0 bottom-0 w-full h-px bg-title origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+            </span>
+          </a>
+        
+        </p>
+      </div>
         </div>
   )
 }

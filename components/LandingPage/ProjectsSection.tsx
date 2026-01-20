@@ -1,12 +1,9 @@
-'use client'
+"use client";
 import React from "react";
-import ProjectCard from "./uilayouts/ProjectCard";
+import ProjectCard from "../uilayouts/ProjectCard";
 import { allProjects } from "@/app/config/projectConfig";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowUpRight03Icon } from "@hugeicons/core-free-icons";
 
+import GetMoreSectionFooterBtn from "../ui/GetMoreSectionFooterBtn";
 
 function ProjectsSection() {
   return (
@@ -21,14 +18,14 @@ function ProjectsSection() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-        {allProjects.filter((project) => project.featured).map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+        {allProjects
+          .filter((project) => project.featured)
+          .map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
       </div>
       <div className="flex items-center justify-center mt-6">
-        <Link href={'/projects'} className="p-[2px] group dark:border-white/30 border-black/20 border border-dashed rounded-[10px]">
-        <Button className="rounded-[10px] [&_svg]:group-hover:rotate-45 transition-all duration-300">See all projects <HugeiconsIcon icon={ArrowUpRight03Icon} /></Button>
-        </Link>
+        <GetMoreSectionFooterBtn link="/projects" text="See all projects" />
       </div>
     </div>
   );

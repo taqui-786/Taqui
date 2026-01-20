@@ -1,12 +1,13 @@
-import SocialLinks from "@/components/SocialLinks";
-import HeroImageSection from "@/components/HeroImageSection";
-import HeroBio from "@/components/HeroBio";
-import HeroName from "@/components/HeroName";
-import HeroActionButton from "@/components/HeroActionButton";
+import SocialLinks from "@/components/ui/SocialLinks";
+import HeroImageSection from "@/components/LandingPage/HeroImageSection";
+import HeroBio from "@/components/ui/HeroBio";
+import HeroName from "@/components/ui/HeroName";
+import HeroActionButton from "@/components/ui/HeroActionButton";
 import { HeroContributionGraph } from "@/components/uilayouts/contribution-graph";
-import ProjectsSection from "@/components/ProjectsSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import TechStackSection from "@/components/TechStackSection";
+import ProjectsSection from "@/components/LandingPage/ProjectsSection";
+import ExperienceSection from "@/components/LandingPage/ExperienceSection";
+import TechStackSection from "@/components/LandingPage/TechStackSection";
+import BlogSection from "@/components/LandingPage/BlogSection";
 export default function Page() {
   return (
     <div className="container mx-auto max-w-full md:max-w-3xl px-4 h-auto py-16">
@@ -29,7 +30,7 @@ export default function Page() {
         {/* Tech stack Section */}
         <TechStackSection />
         {/* Blog section */}
-        {/* <BlogSection /> */}
+        <BlogSection />
       </div>
     </div>
   );

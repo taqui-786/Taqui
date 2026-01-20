@@ -1,8 +1,8 @@
 import React from "react";
-import { LiquidButton } from "./uilayouts/animate-ui/components/buttons/liquid";
+import { LiquidButton } from "../uilayouts/animate-ui/components/buttons/liquid";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { GoogleDocIcon, SentIcon } from "@hugeicons/core-free-icons";
-import { Magnetic } from "./uilayouts/magnetic";
+import { Magnetic } from "../uilayouts/magnetic";
 
 function HeroActionButton() {
   return (
