@@ -3,6 +3,9 @@ import { blogConfig } from "../config/blogConfig";
 import BlogCard from "@/components/ui/BlogCard";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight03Icon } from "@hugeicons/core-free-icons";
+import { generateMetadata as genMeta } from "@/app/config/siteConfig";
+
+export const metadata = genMeta("/blogs");
 
 function page() {
   return (

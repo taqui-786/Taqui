@@ -1,11 +1,11 @@
 import React from "react";
 import { experienceConfig } from "../config/experienceConfig";
-import {
-  Accordion,
-
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 
 import ExperinceAccordian from "@/components/ui/ExperinceAccordian";
+import { generateMetadata as genMeta } from "@/app/config/siteConfig";
+
+export const metadata = genMeta("/work");
 
 function page() {
   return (
@@ -18,7 +18,7 @@ function page() {
           Here are all my experiences where I have worked and learned
         </p>
       </div>
-       <div className="flex flex-col w-full gap-4 mt-8">
+      <div className="flex flex-col w-full gap-4 mt-8">
         <Accordion
           type="single"
           collapsible={true}
@@ -26,7 +26,7 @@ function page() {
           defaultValue="item-0"
         >
           {experienceConfig.map((item, index) => (
-          <ExperinceAccordian item={item} index={index} key={index}/>
+            <ExperinceAccordian item={item} index={index} key={index} />
           ))}
         </Accordion>
       </div>
