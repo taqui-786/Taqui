@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     // Theme colors (dark mode)
     const bgColor = "#ffffff";
     const titleColor = "#333";
-    const subtleColor = "#a0a0a0";
+    const subtleColor = "#111";
     const badgeColor = "#2db6f0";
 
     return new ImageResponse(
@@ -26,15 +26,13 @@ export async function GET(request: Request) {
             padding: "60px",
           }}
         >
-          {/* Left side - Avatar */}
- 
-
           {/* Right side - Name and Bio */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               flex: 1,
+              paddingLeft: "60px",
             }}
           >
             {/* Name with verification badge */}
@@ -80,7 +78,7 @@ export async function GET(request: Request) {
                 marginBottom: "16px",
               }}
             >
-              Full Stack Developer
+              Full Stack Web Developer
             </div>
 
             {/* Bio */}
@@ -104,53 +102,34 @@ export async function GET(request: Request) {
                 marginBottom: "20px",
               }}
             >
-              <div
-                style={{
-                  padding: "8px 16px",
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  borderRadius: "20px",
-                  fontSize: "15px",
-                  color: subtleColor,
-                  marginRight: "10px",
-                }}
-              >
-                React
-              </div>
-              <div
-                style={{
-                  padding: "8px 16px",
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  borderRadius: "20px",
-                  fontSize: "15px",
-                  color: subtleColor,
-                  marginRight: "10px",
-                }}
-              >
-                Next.js
-              </div>
-              <div
-                style={{
-                  padding: "8px 16px",
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  borderRadius: "20px",
-                  fontSize: "15px",
-                  color: subtleColor,
-                  marginRight: "10px",
-                }}
-              >
-                TypeScript
-              </div>
-              <div
-                style={{
-                  padding: "8px 16px",
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  borderRadius: "20px",
-                  fontSize: "15px",
-                  color: subtleColor,
-                }}
-              >
-                Node.js
-              </div>
+              {["React", "Next.js", "TypeScript", "Node.js"].map(
+                (tech, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      padding: "3px",
+                      borderWidth: "1px",
+                      borderRadius: "10px",
+                      borderStyle: "solid",
+                      borderColor: "#0003",
+                      marginRight: "10px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        padding: "5px 10px",
+                        backgroundColor: "#f5f5f5",
+                        borderRadius: "8px",
+                        fontSize: "15px",
+                        color: subtleColor,
+                      }}
+                    >
+                      {tech}
+                    </div>
+                  </div>
+                )
+              )}
             </div>
 
             {/* Website URL */}
@@ -158,12 +137,17 @@ export async function GET(request: Request) {
               style={{
                 fontSize: "16px",
                 color: "#333",
+                marginTop: "20px",
+                textDecoration: "underline",
+                textDecorationColor: "#333",
+                textDecorationThickness: "2px",
+                textUnderlineOffset: "5px",
               }}
             >
               taqui.vercel.app
             </div>
           </div>
-                   <div
+          <div
             style={{
               display: "flex",
               marginLeft: "60px",

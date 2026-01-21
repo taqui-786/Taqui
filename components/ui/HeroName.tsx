@@ -31,9 +31,9 @@ function HeroName() {
     <div className="">
 {views.then((views)=>{
   return (
-    <div className="flex items-center justify-center gap-2 p-1 rounded-[8px] bg-black/5 dark:bg-white/15">
-      <HugeiconsIcon icon={Eye} size={20} />
-      <p className="text-sm font-medium text-title dark:text-gray-50 tracking-tight transition-colors duration-300">{views}</p>
+    <div className="flex items-center justify-center gap-1 p-1 rounded-[8px] bg-black/5 dark:bg-white/15">
+      <HugeiconsIcon icon={Eye} size={14} />
+      <p className="text-xs font-medium text-title dark:text-gray-50 tracking-tight transition-colors duration-300">{views}</p>
     </div>
   )
 })}
