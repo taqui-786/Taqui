@@ -2,6 +2,8 @@
   "name": "portfolio_v3",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Taqui",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
