@@ -6,7 +6,7 @@ import { Magnetic } from "../uilayouts/magnetic";
 
 function HeroActionButton() {
   return (
-    <div className=" flex gap-6 items-center animate-fade-in-blur">
+    <div className=" flex gap-6 items-center ">
       <LiquidButton variant={"default"} size={"lg"}>
         <HugeiconsIcon icon={GoogleDocIcon} />
         Resume / CV

@@ -7,7 +7,7 @@ import GetMoreSectionFooterBtn from "../ui/GetMoreSectionFooterBtn";
 
 function ProjectsSection() {
   return (
-    <div className="w-full animate-fade-in-blur ">
+    <div className="w-full  ">
       <div>
         <p className="md:text-base text-sm text-primary">Featured</p>
         <div className="flex items-center gap-2">

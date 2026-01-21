@@ -10,7 +10,7 @@ import {
 
 function HeroBio() {
   return (
-    <div className="text-base md:text-lg text-muted-foreground leading-10 animate-fade-in-blur">
+    <div className="text-base md:text-lg text-muted-foreground leading-10 ">
       I'm a <b className="text-title ">Full Stack</b> web Developer builds
       interactive web <b className="text-title ">app</b> using{" "}
       <CustomBadge href="https://www.typescriptlang.org/" name="Typescript">

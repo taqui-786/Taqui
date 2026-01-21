@@ -4,7 +4,7 @@ import { CustomBadge } from "../ui/custom-badge";
 
 function TechStackSection() {
   return (
-    <div className="w-full animate-fade-in-blur ">
+    <div className="w-full  ">
       <div>
         <p className="md:text-base text-sm text-primary">My Current</p>
         <div className="flex items-center gap-2">

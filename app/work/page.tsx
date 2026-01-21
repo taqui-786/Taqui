@@ -26,7 +26,7 @@ function page() {
           defaultValue="item-0"
         >
           {experienceConfig.map((item, index) => (
-          <ExperinceAccordian item={item} index={index} />
+          <ExperinceAccordian item={item} index={index} key={index}/>
           ))}
         </Accordion>
       </div>

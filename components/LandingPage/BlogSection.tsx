@@ -5,7 +5,7 @@ import GetMoreSectionFooterBtn from "../ui/GetMoreSectionFooterBtn";
 
 function BlogSection() {
   return (
-    <div className="w-full animate-fade-in-blur ">
+    <div className="w-full  ">
       <div>
         <p className="md:text-base text-sm text-primary">Featured</p>
         <div className="flex items-center gap-2">
@@ -23,7 +23,7 @@ function BlogSection() {
           ))}
       </div>
       <div className="flex items-center justify-center mt-6">
-        <GetMoreSectionFooterBtn link="/blog" text="See all blogs" />
+        <GetMoreSectionFooterBtn link="/blogs" text="See all blogs" />
       </div>
     </div>
   );

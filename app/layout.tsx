@@ -11,6 +11,8 @@ import Header from "@/components/ui/Header";
 import { ViewTransitions } from "next-view-transitions";
 import ReactLenis from "lenis/react";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
+import Footer from "@/components/ui/Footer";
 // const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -45,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className={hankenGrotesk.variable}>
+      <html lang="en" className={hankenGrotesk.variable} suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
         >
@@ -59,9 +61,11 @@ export default function RootLayout({
               <main className="min-h-dvh">
                 <Header />
                 {children}
+                <Footer/>
               </main>
             </ReactLenis>
           </ThemeProvider>
+                {/* <UmamiAnalytics /> */}
         </body>
       </html>
     </ViewTransitions>
