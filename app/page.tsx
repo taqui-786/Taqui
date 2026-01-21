@@ -1,6 +1,6 @@
 import SocialLinks from "@/components/ui/SocialLinks";
 import HeroImageSection from "@/components/LandingPage/HeroImageSection";
-import HeroBio from "@/components/ui/HeroBio";
+import HeroBio from "@/components/LandingPage/HeroBio";
 import HeroName from "@/components/ui/HeroName";
 import HeroActionButton from "@/components/ui/HeroActionButton";
 import { HeroContributionGraph } from "@/components/uilayouts/contribution-graph";
@@ -33,8 +33,7 @@ export default function Page() {
         {/* Blog section */}
         <BlogSection />
         {/* Quote */}
-        <QuoteSection/>
-       
+        <QuoteSection />
       </div>
     </div>
   );

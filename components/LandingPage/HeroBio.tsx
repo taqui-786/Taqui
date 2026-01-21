@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomBadge } from "./custom-badge";
+import { CustomBadge } from "../ui/custom-badge";
 import {
   NextjsIcon,
   PostgresqlIcon,

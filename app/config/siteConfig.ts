@@ -124,6 +124,36 @@ export const pageMetadata: Record<string, PageMeta> = {
     ogImage: "/api/og",
     twitterCard: "summary_large_image",
   },
+  // resume page
+  "/resume": {
+    title: "Resume - Professional Journey",
+    description:
+      "Explore my professional work experience across different companies and roles in software development.",
+    keywords: [
+      "work experience",
+      "career",
+      "professional",
+      "software developer",
+      "employment history",
+    ],
+    ogImage: "/api/og",
+    twitterCard: "summary_large_image",
+  },
+  // contact page
+  "/contact": {
+    title: "Contact - Get in Touch",
+    description:
+      "Get in touch with me through the contact form or find my contact information.",
+    keywords: [
+      "contact",
+      "get in touch",
+      "contact information",
+      "email",
+      "phone",
+    ],
+    ogImage: "/api/og",
+    twitterCard: "summary_large_image",
+  },
 };
 
 // Helper function to get metadata for a specific page

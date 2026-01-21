@@ -3,14 +3,18 @@ import { LiquidButton } from "../uilayouts/animate-ui/components/buttons/liquid"
 import { HugeiconsIcon } from "@hugeicons/react";
 import { GoogleDocIcon, SentIcon } from "@hugeicons/core-free-icons";
 import { Magnetic } from "../uilayouts/magnetic";
+import Link from "next/link";
 
 function HeroActionButton() {
   return (
     <div className=" flex gap-6 items-center ">
-      <LiquidButton variant={"default"} size={"lg"}>
-        <HugeiconsIcon icon={GoogleDocIcon} />
-        Resume / CV
-      </LiquidButton>
+      <Link href="/resume">
+        <LiquidButton variant={"default"} size={"lg"}>
+          <HugeiconsIcon icon={GoogleDocIcon} />
+          Resume / CV
+        </LiquidButton>
+      </Link>
+      <Link href="/contact">
       <Magnetic
         intensity={0.2}
         springOptions={{ bounce: 0.1 }}
@@ -33,7 +37,8 @@ function HeroActionButton() {
             </div>
           </Magnetic>
         </button>
-      </Magnetic>
+      </Magnetic>      </Link>
+
     </div>
   );
 }

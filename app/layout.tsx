@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   Geist,
   Geist_Mono,
-  Inter,
   Instrument_Serif,
   Hanken_Grotesk,
 } from "next/font/google";
@@ -14,8 +13,8 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import Footer from "@/components/ui/Footer";
 import { generateMetadata as genMeta } from "@/app/config/siteConfig";
+import { Toaster } from "react-hot-toast";
 
-// const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
   subsets: ["latin"],
@@ -68,7 +67,8 @@ export default function RootLayout({
               </main>
             </ReactLenis>
           </ThemeProvider>
-          {/* <UmamiAnalytics /> */}
+          <Toaster/>
+          <UmamiAnalytics />
         </body>
       </html>
     </ViewTransitions>
