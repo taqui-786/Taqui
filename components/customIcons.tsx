@@ -988,7 +988,7 @@ export const PointIcon = ({ size }: PointProps) => (
   >
     <path
       fill="none"
-      stroke="#000000"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"

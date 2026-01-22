@@ -16,7 +16,7 @@ export const experienceConfig: ExperienceItem[] = [
   {
     company: "Lightwork AI",
     featured:true,
-    position: "Full Stack Developer",
+    position: "Frontend Developer",
     duration: "Oct 2024 - Mar 2025",
     logo: "/lightwork_ai_official_logo.jpg",
     location: "USA - Remote",

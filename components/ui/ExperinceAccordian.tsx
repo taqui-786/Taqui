@@ -9,12 +9,12 @@ import Image from 'next/image'
 function ExperinceAccordian({item,index}: {item: ExperienceItem, index:number}) {
   return (
       <AccordionItem value={`item-${index}`} >
-              <AccordionTrigger>
+              <AccordionTrigger className='cursor-pointer'>
                 {" "}
                 <div className=" w-full md:px-3 py-2 hover:bg-muted transition-all duration-300 flex items-center justify-between rounded-lg">
-                  <div className="flex md:gap-4 gap-2">
+                  <div className="flex md:gap-3 gap-2">
                     <div className="border border-dashed dark:border-white/30 border-black/20 rounded-[10px] p-[2px]">
-                      <div className="h-12 w-12 bg-background rounded-[8px] overflow-hidden relative border border-border">
+                      <div className="h-11 w-11 bg-background rounded-[8px] overflow-hidden relative border border-border">
                         <Image
                           src={item.logo}
                           alt={item.company}
@@ -28,9 +28,9 @@ function ExperinceAccordian({item,index}: {item: ExperienceItem, index:number}) 
                         <h3 className="sm:text-[1.20rem] text-[1.05rem] leading-[0.90] font-semibold text-title ">
                           {item.company}
                         </h3>
-                        {/* <span className="px-[4px]  py-0 text-xs font-medium border border-border text-muted-foreground rounded-[4px]">
+                        <span className="px-[4px]  py-0 text-xs font-medium border border-border text-muted-foreground rounded-[4px]">
                           {item.time}
-                        </span> */}
+                        </span>
                       </div>
                       <p className="sm:text-sm text-xs text-muted-foreground font-normal">
                         {item.position}

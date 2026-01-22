@@ -4,7 +4,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import React from "react";
 
 function HeroName() {
-  const views = getPageViews();
+ 
   return (
     <div className="flex items-center justify-between  ">
       <div className="flex items-center gap-4 relative ">
@@ -67,18 +67,7 @@ function HeroName() {
           ></path>
         </svg>
       </div>
-      <div className="">
-        {views.then((views) => {
-          return (
-            <div className="flex items-center justify-center gap-1 px-2 py-1 rounded-[8px] bg-black/5 dark:bg-white/15">
-              <HugeiconsIcon icon={Eye} size={14} />
-              <p className="text-xs font-medium text-title dark:text-gray-50 tracking-tight transition-colors duration-300">
-                {views}
-              </p>
-            </div>
-          );
-        })}
-      </div>
+
     </div>
   );
 }
