@@ -256,7 +256,7 @@ export function ContributionGraph({
 
               const rect = (
                 <rect
-                  className="data-[level='0']:fill-muted cursor-pointer data-[level='1']:fill-primary/20 data-[level='2']:fill-primary/40 data-[level='3']:fill-primary/60 data-[level='4']:fill-primary/80"
+                  className="data-[level='0']:fill-title/10 cursor-pointer data-[level='1']:fill-title/40 data-[level='2']:fill-title/60 data-[level='3']:fill-title/80 data-[level='4']:fill-title"
                   data-count={day.count}
                   data-date={day.date}
                   data-level={day.level}
@@ -312,7 +312,7 @@ export function ContributionGraph({
               {CONTRIBUTION_LEVELS.map((level) => (
                 <svg key={level} width={CELL_SIZE} height={CELL_SIZE}>
                   <rect
-                    className="data-[level='0']:fill-muted data-[level='1']:fill-primary/20 data-[level='2']:fill-primary/40 data-[level='3']:fill-primary/60 data-[level='4']:fill-primary/80"
+                    className="data-[level='0']:fill-title/10 data-[level='1']:fill-title/40 data-[level='2']:fill-title/60 data-[level='3']:fill-title/80 data-[level='4']:fill-title"
                     data-level={level}
                     height={CELL_SIZE}
                     rx={2}
