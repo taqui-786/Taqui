@@ -4,12 +4,10 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import React from "react";
 
 function HeroName() {
- 
   return (
     <div className="flex items-center justify-between  ">
       <div className="flex items-center gap-4 relative ">
-      
-    <div className="absolute -top-24 -left-24 hidden lg:flex -rotate-10 flex-col items-center justify-center select-none transition-all duration-700 undefined">
+        <div className="absolute -top-24 -left-24 hidden lg:flex -rotate-10 flex-col items-center justify-center select-none transition-all duration-700 undefined">
           <a
             className="text-lg mr-10 select-none text-subtle   cursor-pointer hover:text-title transition-all duration-300 hover:scale-110 shake-on-hover "
             href="mailto:mdtaqui.jhar@gmail.com"
@@ -49,7 +47,7 @@ function HeroName() {
             ></path>
           </svg>
         </div>
-        <h1 className="text-4xl md:text-5xl font-instrument-serif italic font-medium text-title dark:text-gray-50 tracking-tight transition-colors duration-300">
+        <h1 className="text-4xl md:text-5xl font-instrument-serif italic font-medium text-title dark:text-gray-50 tracking-wide transition-colors duration-300">
           Md Taqui Imam
         </h1>
         <svg
@@ -67,7 +65,6 @@ function HeroName() {
           ></path>
         </svg>
       </div>
-
     </div>
   );
 }

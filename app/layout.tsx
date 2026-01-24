@@ -59,13 +59,13 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <ReactLenis root>
+            {/* <ReactLenis root> */}
               <main className="min-h-dvh">
                 <Header />
                 {children}
                 <Footer />
               </main>
-            </ReactLenis>
+            {/* </ReactLenis> */}
           </ThemeProvider>
           <Toaster/>
           <UmamiAnalytics />

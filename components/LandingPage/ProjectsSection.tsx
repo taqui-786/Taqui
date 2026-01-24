@@ -11,7 +11,7 @@ function ProjectsSection() {
       <div>
         <p className="md:text-base text-sm text-subtle">Featured</p>
         <div className="flex items-center gap-2">
-          <h2 className="md:text-5xl text-3xl text-title font-medium font-instrument-serif italic  tracking-wider shrink-0">
+          <h2 className="md:text-5xl text-4xl text-title font-medium font-instrument-serif italic  tracking-wider shrink-0">
             My Projects
           </h2>
           <div className="w-full h-[2px] bg-muted-foreground/30 grow"></div>

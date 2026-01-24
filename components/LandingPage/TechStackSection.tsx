@@ -8,7 +8,7 @@ function TechStackSection() {
       <div>
         <p className="md:text-base text-sm text-subtle">My Current</p>
         <div className="flex items-center gap-2">
-          <h2 className="md:text-5xl text-3xl font-medium text-title font-instrument-serif italic  tracking-wider shrink-0">
+          <h2 className="md:text-5xl text-4xl font-medium text-title font-instrument-serif italic  tracking-wider shrink-0">
             Skills & Technologies
           </h2>
           <div className="w-full h-[2px] bg-muted-foreground/30 grow"></div>
